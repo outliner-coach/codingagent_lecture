@@ -2105,7 +2105,7 @@ await page.waitForLoadState('networkidle');`,
                 title: "아이디/비밀번호 입력 & 로그인",
                 code: `// 2. 로그인 정보 입력
 await page.getByRole('textbox', { name: 'ID' }).fill('백패커');
-await page.getByRole('textbox', { name: 'PASSWORD' }).fill('1111');
+await page.getByRole('textbox', { name: 'PASSWORD' }).fill('0000');
 await page.getByRole('button', { name: 'Submit' }).click();
 await page.waitForLoadState('networkidle');`,
                 browserContent: `
