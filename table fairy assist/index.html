@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테이블 요정 어시스트</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <h1>🧚 테이블 요정 어시스트</h1>
+            <div class="subtitle">함께라서 가능한 일 ✨</div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="작가명 또는 요정 이름 검색...">
+                <button id="searchBtn">🔍</button>
+            </div>
+            <button id="guideBtn" class="guide-btn">📖 요정 가이드</button>
+        </header>
+
+        <section id="guideSection" class="guide-section hidden">
+            <button id="closeGuideBtn" class="back-btn">← 닫기</button>
+            <div class="guide-content">
+                <h2>🌟 테이블 요정 가이드</h2>
+
+                <div class="guide-card highlight">
+                    <h3>✨ 요정의 역할</h3>
+                    <p><em>"요정의 성공이 핸드메이드 어워드의 성공이다!"</em></p>
+                    <ul>
+                        <li>작가님들이 편안하게 머물 수 있는 '첫 친구'가 되어주세요!</li>
+                        <li>테이블 작가님들의 소개를 이끌어내어 자연스럽고 화기애애한 교류 시간 만들기</li>
+                        <li>각자 맡은 테이블 작가님들의 정보를 미리 조금씩 파악해두어 최대한 친근하게 다가가기</li>
+                        <li>수상 작가님이 상받으러 나가실 때 센스있게 작가님 폰으로 사진 촬영 도와드리기</li>
+                        <li>현장 staff 업무도 함께 수행</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <h3>🎲 밍글링 프로그램 - 빙고 게임</h3>
+                    <p>본 행사 시작 후 사회자 오프닝 이후 바로 진행 (14:05~ 20분간)</p>
+                    <ul>
+                        <li>서로 팔로우 하도록 하기</li>
+                        <li>각자 작품 찜 3개씩 하도록 해주기</li>
+                        <li>가장 멀리서 참석하신 작가님 맞춰보기</li>
+                        <li>가장 오랫동안 활동한 작가님 맞춰보기</li>
+                    </ul>
+                </div>
+
+                <div class="guide-card">
+                    <h3>💬 아이스브레이킹 질문 모음</h3>
+
+                    <p><strong>✔ 기본 웰컴 멘트:</strong></p>
+                    <p>"어서오세요! 저는 오늘 ○○번 테이블 요정 ○○입니다. 편하게 앉아주세요!"</p>
+                    <p>"오늘 행사 정말 기대되죠? 함께 좋은 시간 보내요!"</p>
+
+                    <p><strong>✔ 작품 중심 질문:</strong></p>
+                    <p>"작가님 작품은 어떤 분야에서 활동하고 계세요?"</p>
+                    <p>"올해 가장 기억에 남는 제작 스토리가 있으세요?"</p>
+                    <p>"최근에 만든 작품 중 가장 애착 가는 작품은 무엇인가요?"</p>
+
+                    <p><strong>✔ 깊이 있는 공감 유도 질문:</strong></p>
+                    <p>"올해 활동하시면서 가장 뿌듯했던 순간은 언제였나요?"</p>
+                    <p>"작가님 작품 철학이 궁금해요! 어떤 마음으로 작업하시나요?"</p>
+                </div>
+
+                <div class="guide-card">
+                    <h3>🔥 상황별 대처법</h3>
+
+                    <p><strong>처음 대화를 시작할 때:</strong> 테이블에 배석하는 작가님에 대해 미리 공부해 가면 도움이 됩니다.</p>
+
+                    <p><strong>아무도 대답을 안 할 때:</strong> 가장 우호적으로 보이는 멤버 한 명을 지목해서 답변하도록 하고, 시계 방향으로 독려</p>
+
+                    <p><strong>특정 작가님만 계속 말할 때:</strong> "○○ 작가님은 어떤 작품 만드세요?"로 자연스럽게 턴 분배</p>
+
+                    <p><strong>게임이 빨리 끝나버렸을 때:</strong> 서로 팔로우/찜하기, 가장 멀리서 온 작가님 맞춰보기 등</p>
+
+                    <p><strong>빙고 3줄 완성이 안되고 종료될 경우:</strong> "가장 유익한 팁"을 나눈 작가님 임의 선정하여 선물 증정</p>
+
+                    <p><strong>빙고 게임을 이해 못하실 때:</strong> 조용한 톤으로 옆자리에서 짧게 핵심만 재설명</p>
+
+                    <p><strong>밍글링 타임이 끝났을 때:</strong> "쉬는 시간에 또 이야기 나누어요!" 하고 시상식에 집중하도록 안내</p>
+
+                    <p><strong>아이디어스 불만 이야기할 때:</strong> 담당 부서 전달하겠다고 하고 빙고게임으로 전환</p>
+
+                    <p><strong>좌석이 많이 비어있을 때:</strong> 3명 이하면 스몰토크, 4명 이상이면 빙고 게임 진행</p>
+
+                    <p><strong>중간에 작가님이 도착했을 때:</strong> 현재 이야기 끝난 후 간단히 인사 + 빙고 게임 설명</p>
+                </div>
+
+                <div class="guide-card">
+                    <h3>👔 드레스코드</h3>
+                    <p>시상식에 어울리는 자신감 주는 옷차림 (츄리닝 금지)</p>
+                </div>
+
+                <div class="guide-card">
+                    <h3>🤝 작가님 네트워킹</h3>
+                    <p>만나고 싶은 작가님이나 고민 나눌 동료가 필요하다고 하시면 쉬는 시간에 안내해주세요.</p>
+                </div>
+            </div>
+        </section>
+
+        <nav class="table-tabs-container">
+            <div class="table-tabs" id="tableTabs">
+                <!-- Tabs will be generated here -->
+            </div>
+        </nav>
+
+        <main>
+            <section id="artistList" class="artist-list">
+                <!-- Artist cards will be generated here -->
+            </section>
+
+            <section id="artistDetail" class="artist-detail hidden">
+                <button id="backBtn" class="back-btn">← 목록으로</button>
+                <div id="artistCardContainer">
+                    <!-- Artist detail will be rendered here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

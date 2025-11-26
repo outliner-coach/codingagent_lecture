@@ -1,0 +1,947 @@
+const tableData = [
+  {
+    "table_name": "작가 테이블 1",
+    "fairy1": "한진주",
+    "fairy2": "김다정",
+    "artists": [
+      {
+        "uuid": "a13ad97f-8917-469f-867b-d19c2d6dd5c1",
+        "name": "아비엥또",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/a13ad97f-8917-469f-867b-d19c2d6dd5c1/product"
+      },
+      {
+        "uuid": "25cee04d-d3f9-48d5-9fce-19fd0e4476b7",
+        "name": "여누즈",
+        "category": "판매 우수",
+        "sector": "신인상",
+        "url": "https://www.idus.com/v2/artist/25cee04d-d3f9-48d5-9fce-19fd0e4476b7"
+      },
+      {
+        "uuid": "5d461746-da18-4bff-a4ff-4323b04cd20c",
+        "name": "45번길쿠키",
+        "category": "활동 우수",
+        "sector": "인기상",
+        "url": "https://www.idus.com/v2/artist/5d461746-da18-4bff-a4ff-4323b04cd20c"
+      },
+      {
+        "uuid": "20dc8fe8-8ee0-4677-8f26-b95aa187eb34",
+        "name": "다나픽코리아",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/20dc8fe8-8ee0-4677-8f26-b95aa187eb34/product"
+      },
+      {
+        "uuid": "ffe575f3-afc1-4071-8b1b-b65eaf2a5a76",
+        "name": "니모",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/ffe575f3-afc1-4071-8b1b-b65eaf2a5a76/product"
+      },
+      {
+        "uuid": "4e892745-f075-4d37-a396-39c8d286bfce",
+        "name": "고래상점",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/4e892745-f075-4d37-a396-39c8d286bfce/product"
+      },
+      {
+        "uuid": "fe23da0c-5fe9-4377-8679-0dc04ee78acd",
+        "name": "자작나무공방",
+        "category": "판매 우수",
+        "sector": "카테고리 최우수상",
+        "url": "https://www.idus.com/v2/artist/fe23da0c-5fe9-4377-8679-0dc04ee78acd"
+      },
+      {
+        "uuid": "6410a4f7-59e3-4ce6-b352-3824d871a2c8",
+        "name": "gongambox",
+        "category": "판매 우수",
+        "sector": "신인상",
+        "url": "https://www.idus.com/v2/artist/6410a4f7-59e3-4ce6-b352-3824d871a2c8"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 2",
+    "fairy1": "박현정",
+    "fairy2": "윤혜영",
+    "artists": [
+      {
+        "uuid": "d3ae58fe-4fe2-41d9-8be6-22f90f355e28",
+        "name": "뜰랑말랑",
+        "category": "판매 우수",
+        "sector": "성장상",
+        "url": "https://www.idus.com/v2/artist/d3ae58fe-4fe2-41d9-8be6-22f90f355e28"
+      },
+      {
+        "uuid": "ff7b18de-3a76-4ed2-8d8e-9b42f662049d",
+        "name": "덫밥",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/ff7b18de-3a76-4ed2-8d8e-9b42f662049d/product"
+      },
+      {
+        "uuid": "10e953fb-6221-41cb-a45e-5f76340000db",
+        "name": "디브스튜디오",
+        "category": "판매 우수",
+        "sector": "신인상",
+        "url": "https://www.idus.com/v2/artist/10e953fb-6221-41cb-a45e-5f76340000db"
+      },
+      {
+        "uuid": "601909e0-6ab3-4174-a33a-b564288ecd9d",
+        "name": "공방한땀두땀",
+        "category": "판매 우수",
+        "sector": "성장상",
+        "url": "https://www.idus.com/v2/artist/601909e0-6ab3-4174-a33a-b564288ecd9d"
+      },
+      {
+        "uuid": "babc585d-7d41-41e5-aeeb-2beb35e0ad02",
+        "name": "도로시패브릭",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/babc585d-7d41-41e5-aeeb-2beb35e0ad02/product"
+      },
+      {
+        "uuid": "99cb6ab8-14ea-48a8-8c25-ee272f8e9ad9",
+        "name": "병아리방앗간",
+        "category": "판매 우수",
+        "sector": "카테고리 우수상",
+        "url": "https://www.idus.com/v2/artist/99cb6ab8-14ea-48a8-8c25-ee272f8e9ad9"
+      },
+      {
+        "uuid": "012593e6-993c-465e-9517-7677719815a1",
+        "name": "라부아뜰리에",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/012593e6-993c-465e-9517-7677719815a1/product"
+      },
+      {
+        "uuid": "5037e34e-598a-445b-8f42-d63a29e9c3e9",
+        "name": "덴브 판타지 공방",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/5037e34e-598a-445b-8f42-d63a29e9c3e9/product"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 3",
+    "fairy1": "박수은",
+    "fairy2": "윤채원",
+    "artists": [
+      {
+        "uuid": "b25e5f70-0250-4c2c-bafc-3691123663e1",
+        "name": "아얀다하우스",
+        "category": "판매 우수",
+        "sector": "신인상",
+        "url": "https://www.idus.com/v2/artist/b25e5f70-0250-4c2c-bafc-3691123663e1"
+      },
+      {
+        "uuid": "a476b0a8-7d95-4a0b-b66d-cc5160c883bc",
+        "name": "룩스투아",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/a476b0a8-7d95-4a0b-b66d-cc5160c883bc/product"
+      },
+      {
+        "uuid": "225bb3cb-6d8d-4a96-9e31-d813ccf045e3",
+        "name": "달사이로",
+        "category": "활동 우수",
+        "sector": "인기상",
+        "url": "https://www.idus.com/v2/artist/225bb3cb-6d8d-4a96-9e31-d813ccf045e3"
+      },
+      {
+        "uuid": "9cdc7fe7-5b3d-47a6-b8c9-e1eb544eb32b",
+        "name": "메이드인 루벤스 (MDRU)",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/9cdc7fe7-5b3d-47a6-b8c9-e1eb544eb32b/product"
+      },
+      {
+        "uuid": "363ae59a-9e2b-4afc-9c6f-05075f655444",
+        "name": "소드락이",
+        "category": "판매 우수",
+        "sector": "성장상",
+        "url": "https://www.idus.com/v2/artist/363ae59a-9e2b-4afc-9c6f-05075f655444"
+      },
+      {
+        "uuid": "83110eb8-6d26-4526-a894-c6f652cb1890",
+        "name": "메이드민스",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/83110eb8-6d26-4526-a894-c6f652cb1890/product"
+      },
+      {
+        "uuid": "e9e9b77d-a863-495f-92fb-066cb72d5d6f",
+        "name": "목공하는아빠",
+        "category": "판매 우수",
+        "sector": "성장상",
+        "url": "https://www.idus.com/v2/artist/e9e9b77d-a863-495f-92fb-066cb72d5d6f"
+      },
+      {
+        "uuid": "8bb04861-9267-4e2a-8893-2fff42996e07",
+        "name": "루비나[Rubeena]",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/8bb04861-9267-4e2a-8893-2fff42996e07/product"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 4",
+    "fairy1": "이정현",
+    "fairy2": "김지훈",
+    "artists": [
+      {
+        "uuid": "66ef518b-28cc-4e86-9701-d927751f6a08",
+        "name": "제주에서국화",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/66ef518b-28cc-4e86-9701-d927751f6a08/product"
+      },
+      {
+        "uuid": "f360eaea-77ea-4e5e-8357-fdc969b29e42",
+        "name": "꽃쟁이의 소꿉놀이터",
+        "category": "판매 우수",
+        "sector": "신인상",
+        "url": "https://www.idus.com/v2/artist/f360eaea-77ea-4e5e-8357-fdc969b29e42"
+      },
+      {
+        "uuid": "15f35504-d44c-4c05-928f-179e394b0ead",
+        "name": "모멘토퍼 momentopper",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/15f35504-d44c-4c05-928f-179e394b0ead/product"
+      },
+      {
+        "uuid": "5f3f78c8-de4e-4a6d-a16c-3266ea61edb7",
+        "name": "47베이지",
+        "category": "활동 우수",
+        "sector": "인기상",
+        "url": "https://www.idus.com/v2/artist/5f3f78c8-de4e-4a6d-a16c-3266ea61edb7"
+      },
+      {
+        "uuid": "9117de25-cb3b-4e7a-9956-44d8826b45a2",
+        "name": "몽미엘(monmiel)",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/9117de25-cb3b-4e7a-9956-44d8826b45a2/product"
+      },
+      {
+        "uuid": "ba8935de-9ce5-48b2-9fa9-4b4cf24dd03e",
+        "name": "나크공방",
+        "category": "활동 우수",
+        "sector": "인기상",
+        "url": "https://www.idus.com/v2/artist/ba8935de-9ce5-48b2-9fa9-4b4cf24dd03e"
+      },
+      {
+        "uuid": "7a4e09b4-1aa4-4124-a483-3f8d06db3436",
+        "name": "비올레타",
+        "category": "활동 우수",
+        "sector": "인기상",
+        "url": "https://www.idus.com/v2/artist/7a4e09b4-1aa4-4124-a483-3f8d06db3436"
+      },
+      {
+        "uuid": "e4a89746-e93d-48cc-9d59-01567ad5fbd3",
+        "name": "바라믐",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/e4a89746-e93d-48cc-9d59-01567ad5fbd3/product"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 5",
+    "fairy1": "황진아",
+    "fairy2": "임경은",
+    "artists": [
+      {
+        "uuid": "386ad834-f247-4dbe-b775-d34bb64d9377",
+        "name": "핸드메이드 주얼스쿨 (주얼쌤)",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/386ad834-f247-4dbe-b775-d34bb64d9377/product"
+      },
+      {
+        "uuid": "17edc306-76d4-433e-b606-8b3c37c074f7",
+        "name": "세이메모리",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/17edc306-76d4-433e-b606-8b3c37c074f7/product"
+      },
+      {
+        "uuid": "38087a84-e6aa-4cc4-98ef-8f3cd1c47137",
+        "name": "포도웅아",
+        "category": "판매 우수",
+        "sector": "베스트 선물상",
+        "url": "https://www.idus.com/v2/artist/38087a84-e6aa-4cc4-98ef-8f3cd1c47137"
+      },
+      {
+        "uuid": "70fdb061-ecb0-11e3-954e-06a6fa0000b9",
+        "name": "빈쌤의 빈티지아트샵(빈크레프트)",
+        "category": "판매 우수",
+        "sector": "글로벌 우수상",
+        "url": "https://www.idus.com/v2/artist/70fdb061-ecb0-11e3-954e-06a6fa0000b9"
+      },
+      {
+        "uuid": "26c90516-8409-476e-b022-a9c5e39ddf6a",
+        "name": "레이문",
+        "category": "판매 우수",
+        "sector": "카테고리 우수상",
+        "url": "https://www.idus.com/v2/artist/26c90516-8409-476e-b022-a9c5e39ddf6a"
+      },
+      {
+        "uuid": "1def4d4f-634a-4046-a44d-be39a3a5bcc5",
+        "name": "청순한호랑이",
+        "category": "활동 우수",
+        "sector": "K-힙상",
+        "url": "https://www.idus.com/v2/artist/1def4d4f-634a-4046-a44d-be39a3a5bcc5"
+      },
+      {
+        "uuid": "e3a40014-a0c9-4204-b1be-f714db52cde6",
+        "name": "바이올렛토퍼",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/e3a40014-a0c9-4204-b1be-f714db52cde6/product"
+      },
+      {
+        "uuid": "93b853bd-3027-4ab8-86c0-3b2edd31d6b4",
+        "name": "류디저트(ryu dessert)",
+        "category": "활동 우수",
+        "sector": "우수 활동상",
+        "url": "https://www.idus.com/v2/artist/93b853bd-3027-4ab8-86c0-3b2edd31d6b4"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 6",
+    "fairy1": "이도경",
+    "fairy2": "이지윤",
+    "artists": [
+      {
+        "uuid": "15eb09bb-9858-47e3-80f6-aab7b1c12b88",
+        "name": "키스텔라",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/15eb09bb-9858-47e3-80f6-aab7b1c12b88/product"
+      },
+      {
+        "uuid": "973741a6-1aa3-4180-b434-bad47115700d",
+        "name": "메이버니",
+        "category": "별작가",
+        "sector": "별작가 시리우스상",
+        "url": "https://www.idus.com/v2/artist/973741a6-1aa3-4180-b434-bad47115700d"
+      },
+      {
+        "uuid": "1fc2d87b-32dc-45e6-80d3-4fe7d9371213",
+        "name": "식용금박 미인골드",
+        "category": "IPUS",
+        "sector": "콜라보 우수상",
+        "url": "https://www.idus.com/v2/artist/1fc2d87b-32dc-45e6-80d3-4fe7d9371213"
+      },
+      {
+        "uuid": "775661d3-989b-11e4-a0e7-06f4fe0000b5",
+        "name": "엠캐슬공방",
+        "category": "활동 우수",
+        "sector": "우수 활동상",
+        "url": "https://www.idus.com/v2/artist/775661d3-989b-11e4-a0e7-06f4fe0000b5"
+      },
+      {
+        "uuid": "b030dd90-3607-4491-b584-365b8b59ddef",
+        "name": "컵 만드는 라모",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/b030dd90-3607-4491-b584-365b8b59ddef/product"
+      },
+      {
+        "uuid": "7d98c1a9-5127-47cf-9b5f-d946717b7136",
+        "name": "gomglak(곰지락)",
+        "category": "활동 우수",
+        "sector": "우수 소통상",
+        "url": "https://www.idus.com/v2/artist/7d98c1a9-5127-47cf-9b5f-d946717b7136"
+      },
+      {
+        "uuid": "0789c15c-bfde-443a-b98e-b9221b99e81b",
+        "name": "이네스야",
+        "category": "활동 우수",
+        "sector": "가치상",
+        "url": "https://www.idus.com/v2/artist/0789c15c-bfde-443a-b98e-b9221b99e81b"
+      },
+      {
+        "uuid": "42a01493-5c17-46ec-9051-2aa0c51eb434",
+        "name": "팔공산얼큰이",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/42a01493-5c17-46ec-9051-2aa0c51eb434/product"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 7",
+    "fairy1": "김송현",
+    "fairy2": "원평욱",
+    "artists": [
+      {
+        "uuid": "bf00b92f-a5e1-4a1f-a83d-227a06220477",
+        "name": "Libet(세레스)",
+        "category": "활동 우수",
+        "sector": "특별상",
+        "url": "https://www.idus.com/v2/artist/bf00b92f-a5e1-4a1f-a83d-227a06220477"
+      },
+      {
+        "uuid": "5cab31c0-7d97-4898-8541-b4660c350d1c",
+        "name": "TINY BITE",
+        "category": "활동 우수",
+        "sector": "공예 / 디자인상",
+        "url": "https://www.idus.com/v2/artist/5cab31c0-7d97-4898-8541-b4660c350d1c"
+      },
+      {
+        "uuid": "f9fc2c47-c77d-47b6-b61e-743c5350b22d",
+        "name": "팔렛트엔 제이",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/f9fc2c47-c77d-47b6-b61e-743c5350b22d/product"
+      },
+      {
+        "uuid": "8ab734bc-57a4-4b12-9124-91e837b8bb0f",
+        "name": "주는행복 갤러리",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/8ab734bc-57a4-4b12-9124-91e837b8bb0f/product"
+      },
+      {
+        "uuid": "e9074239-80a5-47b7-a4a9-c8baabbb9a8b",
+        "name": "작벼리공방",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/e9074239-80a5-47b7-a4a9-c8baabbb9a8b/product"
+      },
+      {
+        "uuid": "d225587f-0bbf-40b4-9c29-effa27632d74",
+        "name": "반달콤",
+        "category": "판매 우수",
+        "sector": "베스트 선물상",
+        "url": "https://www.idus.com/v2/artist/d225587f-0bbf-40b4-9c29-effa27632d74"
+      },
+      {
+        "uuid": "20d77cc8-2ca1-48e3-9cba-5f00655fe5f5",
+        "name": "복짐(Bokzim)",
+        "category": "판매 우수",
+        "sector": "글로벌 최우수상 ",
+        "url": "https://www.idus.com/v2/artist/20d77cc8-2ca1-48e3-9cba-5f00655fe5f5"
+      },
+      {
+        "uuid": "be2c6e0e-9ec4-4a5a-93f7-d82c633d7b0c",
+        "name": "해피멈머",
+        "category": "판매 우수",
+        "sector": "d special 작가상",
+        "url": "https://www.idus.com/v2/artist/be2c6e0e-9ec4-4a5a-93f7-d82c633d7b0c"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 8",
+    "fairy1": "이다빈",
+    "fairy2": "박태은",
+    "artists": [
+      {
+        "uuid": "1f9d9e4c-ba32-4eaa-b62c-16663f35cbe8",
+        "name": "솜솜당",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/1f9d9e4c-ba32-4eaa-b62c-16663f35cbe8/product"
+      },
+      {
+        "uuid": "9572a0ed-7e50-4aaa-94ab-5d51b92deda5",
+        "name": "레더몹",
+        "category": "활동 우수",
+        "sector": "공예 / 디자인상",
+        "url": "https://www.idus.com/v2/artist/9572a0ed-7e50-4aaa-94ab-5d51b92deda5"
+      },
+      {
+        "uuid": "0692faf0-ebbf-4c0c-9b0f-31c3a9632f8c",
+        "name": "한울",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/0692faf0-ebbf-4c0c-9b0f-31c3a9632f8c/product"
+      },
+      {
+        "uuid": "3483695a-6cfc-4405-806c-a28111b32dde",
+        "name": "어린아이공방",
+        "category": "판매 우수",
+        "sector": "카테고리 우수상",
+        "url": "https://www.idus.com/v2/artist/3483695a-6cfc-4405-806c-a28111b32dde"
+      },
+      {
+        "uuid": "7b7f8aea-9bc9-4620-a353-53fa1fb0282d",
+        "name": "민앤승",
+        "category": "활동 우수",
+        "sector": "우수 소통상",
+        "url": "https://www.idus.com/v2/artist/7b7f8aea-9bc9-4620-a353-53fa1fb0282d"
+      },
+      {
+        "uuid": "41fa165b-ba10-4c16-b236-5212aa945d6b",
+        "name": "블로우캔들",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/41fa165b-ba10-4c16-b236-5212aa945d6b/product"
+      },
+      {
+        "uuid": "df335702-7c84-4d17-8d8d-f762967825d3",
+        "name": "옛.쁨",
+        "category": "활동 우수",
+        "sector": "K-힙상",
+        "url": "https://www.idus.com/v2/artist/df335702-7c84-4d17-8d8d-f762967825d3"
+      },
+      {
+        "uuid": "eacceac9-7992-43db-af29-fb383c7fced9",
+        "name": "달달한놀이터",
+        "category": "판매 우수",
+        "sector": "d special 작가상",
+        "url": "https://www.idus.com/v2/artist/eacceac9-7992-43db-af29-fb383c7fced9"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 9",
+    "fairy1": "조정호",
+    "fairy2": "김수현",
+    "artists": [
+      {
+        "uuid": "c677e4f2-e7b6-46a2-bb7f-137e4eecc310",
+        "name": "브릴리언트레코드",
+        "category": "활동 우수",
+        "sector": "특별상",
+        "url": "https://www.idus.com/v2/artist/c677e4f2-e7b6-46a2-bb7f-137e4eecc310"
+      },
+      {
+        "uuid": "927720b2-1d56-4fd6-96db-a505e71ab120",
+        "name": "보도니",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/927720b2-1d56-4fd6-96db-a505e71ab120/product"
+      },
+      {
+        "uuid": "8ec145ff-c723-41c8-a589-34ea6eb9aae7",
+        "name": "사회적기업 목화송이협동조합",
+        "category": "활동 우수",
+        "sector": "가치상",
+        "url": "https://www.idus.com/v2/artist/8ec145ff-c723-41c8-a589-34ea6eb9aae7"
+      },
+      {
+        "uuid": "631cf453-3db5-4a5f-9f57-870721267673",
+        "name": "17아워즈",
+        "category": "판매 우수",
+        "sector": "카테고리 최우수상",
+        "url": "https://www.idus.com/v2/artist/631cf453-3db5-4a5f-9f57-870721267673"
+      },
+      {
+        "uuid": "3d58ba29-f005-4e9d-abb4-11e03b421d30",
+        "name": "아뜰리에 모네",
+        "category": "활동 우수",
+        "sector": "공예 / 디자인상",
+        "url": "https://www.idus.com/v2/artist/3d58ba29-f005-4e9d-abb4-11e03b421d30"
+      },
+      {
+        "uuid": "1ca411ae-6e12-4c73-8a16-d0aa9bbe38e2",
+        "name": "파피미스트",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/1ca411ae-6e12-4c73-8a16-d0aa9bbe38e2/product"
+      },
+      {
+        "uuid": "9f894ea5-1c89-4760-b327-075069e01b5b",
+        "name": "옐로우 페이퍼 커피",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/9f894ea5-1c89-4760-b327-075069e01b5b/product"
+      },
+      {
+        "uuid": "670ebf4f-df9e-49e6-a221-4c860f5666a0",
+        "name": "박판호순천한우",
+        "category": "판매 우수",
+        "sector": "베스트 선물상",
+        "url": "https://www.idus.com/v2/artist/670ebf4f-df9e-49e6-a221-4c860f5666a0"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 10",
+    "fairy1": "김하민",
+    "fairy2": "김혜림",
+    "artists": [
+      {
+        "uuid": "f0c8acac-48f9-47e5-b347-7f25fdac0d3a",
+        "name": "리베유(LiebeU)",
+        "category": "별작가",
+        "sector": "별작가 베가상",
+        "url": "https://www.idus.com/v2/artist/f0c8acac-48f9-47e5-b347-7f25fdac0d3a"
+      },
+      {
+        "uuid": "cb3f503e-76e5-11e4-9f64-06fd000000c2",
+        "name": "Auming_어밍",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/cb3f503e-76e5-11e4-9f64-06fd000000c2/product"
+      },
+      {
+        "uuid": "662a4024-9c27-424f-a0b7-b4224d9caf85",
+        "name": "행복공작소",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/662a4024-9c27-424f-a0b7-b4224d9caf85/product"
+      },
+      {
+        "uuid": "fc1a10ac-d67d-11e4-909c-06f4fe0000b5",
+        "name": "그리다봄",
+        "category": "판매 우수",
+        "sector": "베스트 선물상",
+        "url": "https://www.idus.com/v2/artist/fc1a10ac-d67d-11e4-909c-06f4fe0000b5"
+      },
+      {
+        "uuid": "8af87b5c-aa39-4284-bab2-6041736e517e",
+        "name": "하츠하나",
+        "category": "활동 우수",
+        "sector": "공예 / 디자인상",
+        "url": "https://www.idus.com/v2/artist/8af87b5c-aa39-4284-bab2-6041736e517e"
+      },
+      {
+        "uuid": "f8a5505d-ae5b-4cfb-906c-d38444751bef",
+        "name": "오소리앤코",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/f8a5505d-ae5b-4cfb-906c-d38444751bef/product"
+      },
+      {
+        "uuid": "c09729d4-c989-4849-9502-702ca62030b5",
+        "name": "studio js 스튜디오제이앤에스",
+        "category": "활동 우수",
+        "sector": "가치상",
+        "url": "https://www.idus.com/v2/artist/c09729d4-c989-4849-9502-702ca62030b5"
+      },
+      {
+        "uuid": "f650c8ae-4a8c-4264-b3a7-c8852d494563",
+        "name": "몽고미",
+        "category": "활동 우수",
+        "sector": "특별상",
+        "url": "https://www.idus.com/v2/artist/f650c8ae-4a8c-4264-b3a7-c8852d494563"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 11",
+    "fairy1": "조유정",
+    "fairy2": "임수민",
+    "artists": [
+      {
+        "uuid": "b987fcad-fa10-4f28-a90d-8553dbaab0ad",
+        "name": "해달자개",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/b987fcad-fa10-4f28-a90d-8553dbaab0ad/product"
+      },
+      {
+        "uuid": "d9bf9405-b53f-44c0-8f13-ac7cff9e90d1",
+        "name": "소정원",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/d9bf9405-b53f-44c0-8f13-ac7cff9e90d1/product"
+      },
+      {
+        "uuid": "afabc169-597b-4801-ab5e-d1801d758e8d",
+        "name": "죽호바람",
+        "category": "활동 우수",
+        "sector": "가치상",
+        "url": "https://www.idus.com/v2/artist/afabc169-597b-4801-ab5e-d1801d758e8d"
+      },
+      {
+        "uuid": "66ca13f6-4a2c-45ed-92da-54730de62d86",
+        "name": "힐링스토리",
+        "category": "활동 우수",
+        "sector": "우수 활동상",
+        "url": "https://www.idus.com/v2/artist/66ca13f6-4a2c-45ed-92da-54730de62d86"
+      },
+      {
+        "uuid": "f7abdabf-aab3-4e6f-a835-28bc32a4dc56",
+        "name": "방구석 찌랭이",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/f7abdabf-aab3-4e6f-a835-28bc32a4dc56/profile?srsltid=AfmBOoo-kcAbJqPot8o_VkyufIQmCACPCYzXhVTCrK2bJXCLIiq9TLhL"
+      },
+      {
+        "uuid": "cb954127-4d76-4723-b9ad-74453aa619c3",
+        "name": "숲공방",
+        "category": "판매 우수",
+        "sector": "카테고리 최우수상",
+        "url": "https://www.idus.com/v2/artist/cb954127-4d76-4723-b9ad-74453aa619c3"
+      },
+      {
+        "uuid": "2a696438-7688-4b19-a475-3919bc562bff",
+        "name": "묘한한땀",
+        "category": "활동 우수",
+        "sector": "최우수 소통상",
+        "url": "https://www.idus.com/v2/artist/2a696438-7688-4b19-a475-3919bc562bff"
+      },
+      {
+        "uuid": "42d2ac60-6745-443d-9999-90ad78e9d100",
+        "name": "정인당",
+        "category": "판매 우수",
+        "sector": "대상",
+        "url": "https://www.idus.com/v2/artist/42d2ac60-6745-443d-9999-90ad78e9d100"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 12",
+    "fairy1": "나은영",
+    "fairy2": "최혜영",
+    "artists": [
+      {
+        "uuid": "68a48267-72e9-4121-a281-e8361e761fa9",
+        "name": "아틀리에지 포터메리",
+        "category": "활동 우수",
+        "sector": "우수 소통상",
+        "url": "https://www.idus.com/v2/artist/68a48267-72e9-4121-a281-e8361e761fa9"
+      },
+      {
+        "uuid": "258cef68-b0c9-46ac-8ed2-7e2f7874aff6",
+        "name": "비단가게",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/258cef68-b0c9-46ac-8ed2-7e2f7874aff6/product"
+      },
+      {
+        "uuid": "2fbfa9b4-18a0-4783-af7b-87450e36ba1b",
+        "name": "뽕빵구리",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/2fbfa9b4-18a0-4783-af7b-87450e36ba1b/product"
+      },
+      {
+        "uuid": "8d3baacb-0bda-4c09-b337-936580aa4fc3",
+        "name": "반월상점 (halfmoon)",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/8d3baacb-0bda-4c09-b337-936580aa4fc3/product"
+      },
+      {
+        "uuid": "98390f28-b4c0-4888-987a-75e0db5705ec",
+        "name": "일편심(국가무형유산 장도장)",
+        "category": "판매 우수",
+        "sector": "카테고리 우수상",
+        "url": "https://www.idus.com/v2/artist/98390f28-b4c0-4888-987a-75e0db5705ec"
+      },
+      {
+        "uuid": "a1f45f66-b63d-4294-99b3-196dabafb4e7",
+        "name": "세날다",
+        "category": "판매 우수",
+        "sector": "카테고리 최우수상",
+        "url": "https://www.idus.com/v2/artist/a1f45f66-b63d-4294-99b3-196dabafb4e7"
+      },
+      {
+        "uuid": "8f9ccb59-1d3f-11e4-8ba2-06f4fe0000b5",
+        "name": "세이리 SEI LI",
+        "category": "IPUS",
+        "sector": "콜라보 우수상",
+        "url": "https://www.idus.com/v2/artist/8f9ccb59-1d3f-11e4-8ba2-06f4fe0000b5"
+      },
+      {
+        "uuid": "7cdb9241-06c9-40d4-9209-05030f2fc4db",
+        "name": "보름달 김치",
+        "category": "작가 이벤트",
+        "sector": "마케팅 왕상",
+        "url": "https://www.idus.com/v2/artist/7cdb9241-06c9-40d4-9209-05030f2fc4db"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 13",
+    "fairy1": "조영은",
+    "fairy2": "이두열",
+    "artists": [
+      {
+        "uuid": "8fdaf8b1-f76f-4ab8-8e8c-988ef8ab51d2",
+        "name": "커플링 공작소",
+        "category": "판매 우수",
+        "sector": "베스트 선물상",
+        "url": "https://www.idus.com/v2/artist/8fdaf8b1-f76f-4ab8-8e8c-988ef8ab51d2"
+      },
+      {
+        "uuid": "31e58688-1a1f-4ce5-bded-8a14e159d61f",
+        "name": "자늘 JANEUL",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/31e58688-1a1f-4ce5-bded-8a14e159d61f/product"
+      },
+      {
+        "uuid": "2e568d25-2a74-40e8-80e9-82de2dcd275d",
+        "name": "별빛잠든후",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/2e568d25-2a74-40e8-80e9-82de2dcd275d/product"
+      },
+      {
+        "uuid": "e116ed20-1908-41b6-a331-b1bd9b1aa1a4",
+        "name": "오스트리치 FACTORY",
+        "category": "활동 우수",
+        "sector": "우수 활동상",
+        "url": "https://www.idus.com/v2/artist/e116ed20-1908-41b6-a331-b1bd9b1aa1a4"
+      },
+      {
+        "uuid": "0eeb869f-ab34-4ab6-a696-1e0430d26c54",
+        "name": "연본당의 수제 전통차 by 연세본초당",
+        "category": "판매 우수",
+        "sector": "카테고리 최우수상",
+        "url": "https://www.idus.com/v2/artist/0eeb869f-ab34-4ab6-a696-1e0430d26c54"
+      },
+      {
+        "uuid": "10d32afe-4968-4ffd-918a-3d0be31af083",
+        "name": "캔루 canroo",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/10d32afe-4968-4ffd-918a-3d0be31af083/product"
+      },
+      {
+        "uuid": "d11fedcd-d354-4707-acf4-4096b82a833b",
+        "name": "메이드로담",
+        "category": "활동 우수",
+        "sector": "K-힙상",
+        "url": "https://www.idus.com/v2/artist/d11fedcd-d354-4707-acf4-4096b82a833b"
+      },
+      {
+        "uuid": "02751001-5e7e-4d19-ad21-b3566cca1144",
+        "name": "미미점빵",
+        "category": "판매 우수",
+        "sector": "d special 작가상",
+        "url": "https://www.idus.com/v2/artist/02751001-5e7e-4d19-ad21-b3566cca1144"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 14",
+    "fairy1": "하동현",
+    "fairy2": "조수진",
+    "artists": [
+      {
+        "uuid": "273ce334-cc3e-4a71-9086-5992000d66b6",
+        "name": "채원",
+        "category": "IPUS",
+        "sector": "콜라보 최우수상",
+        "url": "https://www.idus.com/v2/artist/273ce334-cc3e-4a71-9086-5992000d66b6"
+      },
+      {
+        "uuid": "b5f55f6c-79a8-4ce4-9968-7fc1cd3f4e1d",
+        "name": "코튼스티치(cotton stitch)",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/b5f55f6c-79a8-4ce4-9968-7fc1cd3f4e1d/product"
+      },
+      {
+        "uuid": "d0d24a93-9dff-4b72-85cb-794289984499",
+        "name": "티닥",
+        "category": "활동 우수",
+        "sector": "우수 소통상",
+        "url": "https://www.idus.com/v2/artist/d0d24a93-9dff-4b72-85cb-794289984499"
+      },
+      {
+        "uuid": "e6c2712c-453d-4ecf-8d82-fe4b6167a8f5",
+        "name": "시케",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/e6c2712c-453d-4ecf-8d82-fe4b6167a8f5/product"
+      },
+      {
+        "uuid": "8a900fe2-b152-452c-aa32-642c334f5834",
+        "name": "흙그림",
+        "category": "판매 우수",
+        "sector": "d special 작가상",
+        "url": "https://www.idus.com/v2/artist/8a900fe2-b152-452c-aa32-642c334f5834"
+      },
+      {
+        "uuid": "7919c411-219f-41ec-9fdb-bc45405d026b",
+        "name": "신디스튜디오(cindystudio)",
+        "category": "판매 우수",
+        "sector": "카테고리 우수상",
+        "url": "https://www.idus.com/v2/artist/7919c411-219f-41ec-9fdb-bc45405d026b"
+      },
+      {
+        "uuid": "be7bab62-5435-4499-a464-037174a2121e",
+        "name": "말랑풍선",
+        "category": "작가 이벤트",
+        "sector": "만삭으로 출고했상",
+        "url": "https://www.idus.com/v2/artist/be7bab62-5435-4499-a464-037174a2121e"
+      },
+      {
+        "uuid": "58510d38-ec10-4816-9e23-32040f9d525e",
+        "name": "아트핑고",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/58510d38-ec10-4816-9e23-32040f9d525e/product"
+      }
+    ]
+  },
+  {
+    "table_name": "작가 테이블 15",
+    "fairy1": "송연주",
+    "fairy2": "박상영",
+    "artists": [
+      {
+        "uuid": "7d8ffd08-1827-4542-953b-80a87a659246",
+        "name": "치타박스",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/7d8ffd08-1827-4542-953b-80a87a659246/product"
+      },
+      {
+        "uuid": "ca97fa47-82c1-4f66-9e49-c2e2970db16d",
+        "name": "그린솔(green솔)",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/ca97fa47-82c1-4f66-9e49-c2e2970db16d/product"
+      },
+      {
+        "uuid": "4e92458a-a40f-4de9-a027-a31303a50bd1",
+        "name": "진앤클레어",
+        "category": "활동 우수",
+        "sector": "우수 소통상",
+        "url": "https://www.idus.com/v2/artist/4e92458a-a40f-4de9-a027-a31303a50bd1"
+      },
+      {
+        "uuid": "c6efdcdc-e747-4224-b09b-3e0f6da9397c",
+        "name": "소심한곰손",
+        "category": "",
+        "sector": "",
+        "url": "https://www.idus.com/v2/artist/c6efdcdc-e747-4224-b09b-3e0f6da9397c/product"
+      },
+      {
+        "uuid": "5326b4c0-10d1-4f2b-8647-6cc4eb71ba7e",
+        "name": "명인코스메틱",
+        "category": "판매 우수",
+        "sector": "성장상",
+        "url": "https://www.idus.com/v2/artist/5326b4c0-10d1-4f2b-8647-6cc4eb71ba7e"
+      },
+      {
+        "uuid": "a9a5246d-34b0-4c75-ba1c-89b5c1a05110",
+        "name": "쿨쿨잠스튜디오",
+        "category": "판매 우수",
+        "sector": "d special 작가상",
+        "url": "https://www.idus.com/v2/artist/a9a5246d-34b0-4c75-ba1c-89b5c1a05110"
+      },
+      {
+        "uuid": "49d735a5-43f6-4baf-b90b-8152b4930023",
+        "name": "조림만 30년 효제동조림집",
+        "category": "별작가",
+        "sector": "별작가 은하수상",
+        "url": "https://www.idus.com/v2/artist/49d735a5-43f6-4baf-b90b-8152b4930023"
+      },
+      {
+        "uuid": "909a6a90-0fb9-4500-8aee-76aaa08358ed",
+        "name": "쓰이고(ssuigo)",
+        "category": "IPUS",
+        "sector": "콜라보 우수상",
+        "url": "https://www.idus.com/v2/artist/909a6a90-0fb9-4500-8aee-76aaa08358ed"
+      }
+    ]
+  }
+];
