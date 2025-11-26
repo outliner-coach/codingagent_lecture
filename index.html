@@ -309,7 +309,7 @@
             <li><a href="#slide-part2">Part 2: Case Studies</a></li>
             <li><a href="#slide-usecases">6. 업무 자동화 시나리오</a></li>
             <li><a href="#slide-5">7. Case 1: 주차등록 🎮</a></li>
-            <li><a href="#slide-6">8. Case 2: 발표자료</a></li>
+            <li><a href="#slide-6">8. Case 2: 발표자료 🎮</a></li>
             <li><a href="#slide-7">9. Case 3: 테이블 요정 🎮</a></li>
             <li><a href="#slide-8">10. 핵심 메시지</a></li>
             <li><a href="#slide-9">11. Q&A</a></li>
@@ -1041,43 +1041,315 @@ await page.waitForLoadState('networkidle');</code></pre>
             <div class="slide-number">7 / 11</div>
         </section>
 
-        <!-- Case 2: 발표자료 만들기 -->
-        <section class="slide" id="slide-6">
-            <div class="content">
-                <span class="section-tag">Case 2: Meta-Example</span>
-                <h2>📑 발표 자료 슬라이드 웹페이지 만들기</h2>
-                <div class="highlight-box" style="text-align: center;">
-                    <h4>✨ 놀라운 사실</h4>
-                    <p style="font-size: 24px; margin-top: 10px;">
-                        지금 보고 계신 이 웹페이지는<br>
-                        <strong>"코딩 에이전트가 100% 작성"</strong>했습니다.
-                    </p>
+        <!-- Case 2: 발표자료 만들기 (인터랙티브) -->
+        <section class="slide bg-slate-900" id="slide-6">
+            <div class="content max-w-7xl w-full">
+                <div class="text-center mb-4">
+                    <span class="section-tag">Case 2: Meta-Example</span>
+                    <h2 style="font-size: 42px; font-weight: 700;">📑 발표 자료 슬라이드 웹페이지 만들기</h2>
+                    <p class="text-slate-400 text-lg">지금 보고 계신 이 웹페이지가 어떻게 만들어졌는지 직접 확인하세요</p>
                 </div>
-                <h3>작업 프로세스 (Input → Output)</h3>
-                <div class="diagram">
-                    <div class="icon-grid" style="grid-template-columns: 1fr 0.2fr 1fr; gap: 10px; align-items: center; margin: 0;">
-                        <div class="icon-item" style="height: 100%; display: flex; flex-direction: column;">
-                            <h4>📝 Input (Markdown)</h4>
-                            <div style="background: #0f172a; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 14px; color: #cbd5e1; flex-grow: 1; text-align: left;">
-                                # 강의 제목<br>
-                                비개발자를 위한 코딩 에이전트
+
+                <!-- Main Tabs -->
+                <div class="flex justify-center gap-3 mb-6">
+                    <button onclick="switchPresentationTab('chat')" id="pres-tab-chat" class="pres-main-tab active px-5 py-2.5 rounded-full border border-green-500 bg-green-600 text-white font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="message-square" class="w-4 h-4"></i> 실제 대화 재현
+                    </button>
+                    <button onclick="switchPresentationTab('timeline')" id="pres-tab-timeline" class="pres-main-tab px-5 py-2.5 rounded-full border border-slate-600 bg-slate-800 text-slate-400 font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="git-commit" class="w-4 h-4"></i> 작업 타임라인
+                    </button>
+                    <button onclick="switchPresentationTab('insight')" id="pres-tab-insight" class="pres-main-tab px-5 py-2.5 rounded-full border border-slate-600 bg-slate-800 text-slate-400 font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="lightbulb" class="w-4 h-4"></i> 핵심 인사이트
+                    </button>
+                </div>
+
+                <!-- Tab Content: Chat -->
+                <div id="pres-content-chat" class="pres-tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left: Chat Simulation -->
+                        <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-2xl flex flex-col" style="height: 520px;">
+                            <div class="bg-slate-900 px-4 py-3 flex items-center gap-3 border-b border-slate-700 flex-shrink-0">
+                                <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="bot" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-white text-sm">Cursor Agent</div>
+                                    <div class="text-xs text-green-400 flex items-center gap-1">
+                                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> 작업 중
+                                    </div>
+                                </div>
+                                <div class="ml-auto flex gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                </div>
+                            </div>
+                            
+                            <div id="pres-chat-display" class="flex-1 p-4 overflow-y-auto space-y-3 bg-slate-900/50" style="scroll-behavior: smooth;">
+                                <!-- Chat bubbles injected by JS -->
+                            </div>
+
+                            <div class="p-3 border-t border-slate-700 bg-slate-800 flex-shrink-0">
+                                <div class="flex gap-2">
+                                    <button onclick="prevPresChat()" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-xs font-bold flex items-center gap-1 transition-all">
+                                        <i data-lucide="chevron-left" class="w-4 h-4"></i> 이전
+                                    </button>
+                                    <button onclick="nextPresChat()" class="flex-1 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all">
+                                        다음 대화 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                    </button>
+                                    <button onclick="autoPlayPresChat()" id="pres-autoplay-btn" class="px-3 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-xs font-bold flex items-center gap-1 transition-all">
+                                        <i data-lucide="play" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div style="text-align: center; font-size: 40px;">➡️</div>
-                        <div class="icon-item" style="height: 100%; display: flex; flex-direction: column;">
-                            <h4>✨ Output (Web Slide)</h4>
-                            <div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); padding: 15px; border-radius: 8px; flex-grow: 1; display: flex; align-items: center; justify-content: center; border: 2px solid var(--secondary-color);">
-                                <div style="text-align: center;">
-                                    <span style="font-size: 40px;">🖥️</span><br>
-                                    <span style="font-weight: bold; color: var(--white);">HTML/CSS</span>
+
+                        <!-- Right: Current Task & Stats -->
+                        <div class="space-y-4">
+                            <!-- Highlight Box -->
+                            <div class="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border border-green-500/30 rounded-xl p-5">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                                        <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-green-300 text-base m-0">✨ 놀라운 사실</h4>
+                                        <p class="text-xs text-green-400/70 m-0">Meta-Example</p>
+                                    </div>
+                                </div>
+                                <p class="text-green-100 text-sm leading-relaxed">
+                                    지금 보고 계신 이 발표자료는 <strong class="text-green-300">코딩 에이전트가 100% 작성</strong>했습니다.
+                                    좌측 채팅창은 실제 작업 과정의 일부를 재현한 것입니다.
+                                </p>
+                            </div>
+
+                            <!-- Current Phase -->
+                            <div id="pres-current-phase" class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+                                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                    <i data-lucide="activity" class="w-4 h-4"></i> 현재 작업 단계
+                                </h4>
+                                <div class="bg-slate-900 rounded-lg p-4">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">1</div>
+                                        <div class="font-bold text-white">요구사항 분석</div>
+                                    </div>
+                                    <p class="text-sm text-slate-400">Markdown 파일에서 강의 구조와 내용 파악 중...</p>
+                                </div>
+                            </div>
+
+                            <!-- Stats -->
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-indigo-400" id="pres-stat-lines">0</div>
+                                    <div class="text-xs text-slate-500">코드 라인</div>
+                                </div>
+                                <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-green-400" id="pres-stat-slides">0</div>
+                                    <div class="text-xs text-slate-500">슬라이드</div>
+                                </div>
+                                <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center">
+                                    <div class="text-2xl font-bold text-purple-400" id="pres-stat-features">0</div>
+                                    <div class="text-xs text-slate-500">인터랙티브</div>
+                                </div>
+                            </div>
+
+                            <!-- File Changes -->
+                            <div class="bg-slate-800 rounded-xl border border-slate-700 p-4">
+                                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">📁 생성/수정된 파일</h4>
+                                <div class="space-y-1 font-mono text-xs">
+                                    <div class="flex items-center gap-2 text-green-400">
+                                        <span class="w-4 text-center">+</span> index.html
+                                    </div>
+                                    <div class="flex items-center gap-2 text-yellow-400">
+                                        <span class="w-4 text-center">~</span> coding agent for non-developers.md
+                                    </div>
+                                    <div class="flex items-center gap-2 text-green-400">
+                                        <span class="w-4 text-center">+</span> .gitignore
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="step-box" style="margin-top: 30px;">
-                    <strong>💡 Insight:</strong> PPT 도형을 그리는 시간보다, <strong>"글로 명확한 요구사항을 적는 시간"</strong>이 더 중요해졌습니다.
+
+                <!-- Tab Content: Timeline -->
+                <div id="pres-content-timeline" class="pres-tab-content hidden">
+                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-6">
+                        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="git-commit" class="w-5 h-5 text-green-400"></i> 작업 타임라인
+                        </h3>
+                        
+                        <div class="relative">
+                            <!-- Timeline Line -->
+                            <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-slate-700"></div>
+                            
+                            <!-- Timeline Items -->
+                            <div class="space-y-6">
+                                <div class="timeline-item relative pl-16 cursor-pointer" onclick="showTimelineDetail(0)">
+                                    <div class="absolute left-4 w-5 h-5 bg-green-600 rounded-full border-4 border-slate-800"></div>
+                                    <div class="bg-slate-900 rounded-lg p-4 hover:bg-slate-900/80 transition-colors">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs text-slate-500">Step 1</span>
+                                            <span class="text-xs text-green-400">✓ 완료</span>
+                                        </div>
+                                        <h4 class="font-bold text-white text-sm">요구사항 파악</h4>
+                                        <p class="text-xs text-slate-400 mt-1">"폴더 내용 파악해봐" → 프로젝트 구조 분석</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item relative pl-16 cursor-pointer" onclick="showTimelineDetail(1)">
+                                    <div class="absolute left-4 w-5 h-5 bg-green-600 rounded-full border-4 border-slate-800"></div>
+                                    <div class="bg-slate-900 rounded-lg p-4 hover:bg-slate-900/80 transition-colors">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs text-slate-500">Step 2</span>
+                                            <span class="text-xs text-green-400">✓ 완료</span>
+                                        </div>
+                                        <h4 class="font-bold text-white text-sm">계획 수립 (Mini-Plan)</h4>
+                                        <p class="text-xs text-slate-400 mt-1">Markdown 요구사항 분석 → 슬라이드 구조 설계</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item relative pl-16 cursor-pointer" onclick="showTimelineDetail(2)">
+                                    <div class="absolute left-4 w-5 h-5 bg-green-600 rounded-full border-4 border-slate-800"></div>
+                                    <div class="bg-slate-900 rounded-lg p-4 hover:bg-slate-900/80 transition-colors">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs text-slate-500">Step 3</span>
+                                            <span class="text-xs text-green-400">✓ 완료</span>
+                                        </div>
+                                        <h4 class="font-bold text-white text-sm">기본 슬라이드 생성</h4>
+                                        <p class="text-xs text-slate-400 mt-1">HTML/CSS/JS 코드 작성 → 11개 슬라이드 생성</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item relative pl-16 cursor-pointer" onclick="showTimelineDetail(3)">
+                                    <div class="absolute left-4 w-5 h-5 bg-green-600 rounded-full border-4 border-slate-800"></div>
+                                    <div class="bg-slate-900 rounded-lg p-4 hover:bg-slate-900/80 transition-colors">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs text-slate-500">Step 4</span>
+                                            <span class="text-xs text-green-400">✓ 완료</span>
+                                        </div>
+                                        <h4 class="font-bold text-white text-sm">인터랙티브 요소 추가</h4>
+                                        <p class="text-xs text-slate-400 mt-1">AI 원리, 업무 시나리오, 케이스 스터디 고도화</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="timeline-item relative pl-16 cursor-pointer" onclick="showTimelineDetail(4)">
+                                    <div class="absolute left-4 w-5 h-5 bg-green-600 rounded-full border-4 border-slate-800"></div>
+                                    <div class="bg-slate-900 rounded-lg p-4 hover:bg-slate-900/80 transition-colors">
+                                        <div class="flex items-center justify-between mb-2">
+                                            <span class="text-xs text-slate-500">Step 5</span>
+                                            <span class="text-xs text-green-400">✓ 완료</span>
+                                        </div>
+                                        <h4 class="font-bold text-white text-sm">테스트 & 배포</h4>
+                                        <p class="text-xs text-slate-400 mt-1">브라우저 테스트 → GitHub Pages 배포</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Detail Panel -->
+                        <div id="timeline-detail-panel" class="mt-6 bg-slate-900 rounded-xl p-5 hidden">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Insight -->
+                <div id="pres-content-insight" class="pres-tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Key Insight -->
+                        <div class="bg-gradient-to-br from-indigo-900/30 to-purple-900/30 border border-indigo-500/30 rounded-2xl p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center">
+                                    <i data-lucide="lightbulb" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-white m-0">핵심 인사이트</h3>
+                            </div>
+                            <p class="text-indigo-100 text-lg leading-relaxed mb-4">
+                                PPT 도형을 그리는 시간보다,<br>
+                                <strong class="text-indigo-300">"글로 명확한 요구사항을 적는 시간"</strong>이<br>
+                                더 중요해졌습니다.
+                            </p>
+                            <div class="bg-indigo-900/50 rounded-lg p-4">
+                                <p class="text-sm text-indigo-300 m-0">
+                                    <strong>Before:</strong> 슬라이드 디자인 + 레이아웃 + 애니메이션 = 수 시간<br>
+                                    <strong>After:</strong> 요구사항 문서 작성 + AI 지시 = 수십 분
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Input vs Output -->
+                        <div class="space-y-4">
+                            <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+                                <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                                    <i data-lucide="file-text" class="w-5 h-5 text-blue-400"></i> Input (요구사항)
+                                </h4>
+                                <div class="bg-slate-900 rounded-lg p-4 font-mono text-sm text-slate-300">
+                                    <div class="text-blue-400"># coding agent for non-developers.md</div>
+                                    <div class="text-slate-500 mt-2">- 비개발자 대상 강의</div>
+                                    <div class="text-slate-500">- AI 작동 원리 설명</div>
+                                    <div class="text-slate-500">- 실제 케이스 스터디 3개</div>
+                                    <div class="text-slate-500">- 인터랙티브 요소 포함</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+                                <h4 class="font-bold text-white mb-3 flex items-center gap-2">
+                                    <i data-lucide="layout" class="w-5 h-5 text-green-400"></i> Output (결과물)
+                                </h4>
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div class="bg-slate-900 rounded-lg p-3 text-center">
+                                        <div class="text-2xl font-bold text-green-400">2,300+</div>
+                                        <div class="text-xs text-slate-500">Lines of Code</div>
+                                    </div>
+                                    <div class="bg-slate-900 rounded-lg p-3 text-center">
+                                        <div class="text-2xl font-bold text-blue-400">11</div>
+                                        <div class="text-xs text-slate-500">Slides</div>
+                                    </div>
+                                    <div class="bg-slate-900 rounded-lg p-3 text-center">
+                                        <div class="text-2xl font-bold text-purple-400">5+</div>
+                                        <div class="text-xs text-slate-500">Interactive</div>
+                                    </div>
+                                    <div class="bg-slate-900 rounded-lg p-3 text-center">
+                                        <div class="text-2xl font-bold text-amber-400">100%</div>
+                                        <div class="text-xs text-slate-500">AI Generated</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Process Flow -->
+                    <div class="mt-6 bg-slate-800 rounded-xl border border-slate-700 p-5">
+                        <h4 class="font-bold text-white mb-4 flex items-center gap-2">
+                            <i data-lucide="workflow" class="w-5 h-5 text-purple-400"></i> 작업 프로세스
+                        </h4>
+                        <div class="flex flex-wrap items-center justify-center gap-4">
+                            <div class="bg-slate-900 rounded-xl p-4 text-center min-w-[120px]">
+                                <div class="text-2xl mb-2">📝</div>
+                                <div class="font-bold text-white text-sm">Markdown</div>
+                                <div class="text-xs text-slate-500">요구사항 정의</div>
+                            </div>
+                            <div class="text-green-400"><i data-lucide="arrow-right" class="w-6 h-6"></i></div>
+                            <div class="bg-slate-900 rounded-xl p-4 text-center min-w-[120px]">
+                                <div class="text-2xl mb-2">🤖</div>
+                                <div class="font-bold text-white text-sm">Cursor Agent</div>
+                                <div class="text-xs text-slate-500">코드 생성</div>
+                            </div>
+                            <div class="text-green-400"><i data-lucide="arrow-right" class="w-6 h-6"></i></div>
+                            <div class="bg-slate-900 rounded-xl p-4 text-center min-w-[120px]">
+                                <div class="text-2xl mb-2">🔄</div>
+                                <div class="font-bold text-white text-sm">피드백</div>
+                                <div class="text-xs text-slate-500">수정 요청</div>
+                            </div>
+                            <div class="text-green-400"><i data-lucide="arrow-right" class="w-6 h-6"></i></div>
+                            <div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl p-4 text-center min-w-[120px]">
+                                <div class="text-2xl mb-2">🖥️</div>
+                                <div class="font-bold text-white text-sm">Web Slide</div>
+                                <div class="text-xs text-green-200">완성!</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="slide-number">8 / 11</div>
@@ -2318,6 +2590,250 @@ function getTableData() {
         }
 
         // ============================================
+        // 6. Case 2: 발표자료 만들기 인터랙티브 로직
+        // ============================================
+        
+        // Presentation Chat Data (실제 대화 기반)
+        const presChatData = [
+            {
+                phase: { num: 1, title: '요구사항 분석', desc: '프로젝트 폴더 구조와 요구사항 파악 중...' },
+                stats: { lines: 0, slides: 0, features: 0 },
+                messages: [
+                    { role: 'user', content: '현재 프로젝트 폴더의 내용을 파악해봐.' },
+                    { role: 'agent', content: '프로젝트 폴더를 분석하겠습니다. 현재 2개의 기존 프로젝트가 있습니다:\n• parking_registration/ - 주차등록 자동화\n• table fairy assist/ - 테이블 요정 어시스턴트' }
+                ]
+            },
+            {
+                phase: { num: 2, title: '계획 수립', desc: 'Markdown 요구사항을 분석하여 슬라이드 구조 설계 중...' },
+                stats: { lines: 0, slides: 0, features: 0 },
+                messages: [
+                    { role: 'user', content: '@coding agent for non-developers.md 이 파일에 내 요구사항을 담아두었어. 폴더 내 자료와 파일 내용을 바탕으로 강의 슬라이드 제작을 위한 계획을 수립해.' },
+                    { role: 'agent', content: '요구사항을 분석했습니다. 다음과 같이 계획을 수립합니다:\n\n**슬라이드 구성:**\n1. 표지\n2. 강의 목표\n3. AI 작동 원리\n4. 코딩 에이전트 소개\n5-8. 케이스 스터디 (주차등록, 발표자료, 테이블요정)\n9. 핵심 메시지\n10. Q&A' }
+                ]
+            },
+            {
+                phase: { num: 3, title: '기본 슬라이드 생성', desc: 'HTML/CSS/JS 코드를 작성하여 슬라이드 생성 중...' },
+                stats: { lines: 800, slides: 10, features: 1 },
+                messages: [
+                    { role: 'user', content: 'Implement the plan as specified. Don\'t stop until you have completed all the to-dos.' },
+                    { role: 'agent', content: '계획에 따라 구현을 시작합니다.\n\n✅ index.html 파일 생성\n✅ CSS 스타일링 (AI 테마 다크모드)\n✅ 슬라이드 네비게이션 구현\n✅ 키보드 단축키 지원\n\n기본 슬라이드 10개 생성 완료!' }
+                ]
+            },
+            {
+                phase: { num: 4, title: '인터랙티브 요소 추가', desc: '추가 콘텐츠를 통합하고 인터랙티브 요소 구현 중...' },
+                stats: { lines: 1500, slides: 11, features: 3 },
+                messages: [
+                    { role: 'user', content: '내가 발표자료에 추가할 내용 2가지를 파일로 만들어서 폴더에 넣어놨어. 이 두개의 파일을 발표자료 html 파일에 통합해줘. 유즈케이스는 Part2 가장 앞에, ai원리는 서두에 넣으면 좋겠어.' },
+                    { role: 'agent', content: '두 파일을 분석하고 통합하겠습니다.\n\n📁 usecases.html → 실전 업무 자동화 시나리오 슬라이드\n📁 ai_principle_learning.tsx → AI 작동 원리 슬라이드\n\nReact 컴포넌트를 Vanilla JS로 변환하고 스타일을 통합합니다...' }
+                ]
+            },
+            {
+                phase: { num: 5, title: '케이스 스터디 고도화', desc: '주차등록, 테이블요정 케이스를 인터랙티브하게 개선 중...' },
+                stats: { lines: 2100, slides: 11, features: 5 },
+                messages: [
+                    { role: 'user', content: '이제 다음 단계로 나아가보자. 주차등록자동화, 테이블요정어시스트 프로젝트가 있어. 이걸 앞의 페이지들처럼 인터랙티브하게 만들고 싶어.' },
+                    { role: 'agent', content: '케이스 스터디 슬라이드를 인터랙티브하게 고도화합니다:\n\n**주차등록 자동화:**\n• Playwright 단계별 시뮬레이션 UI\n• 인터랙티브 아키텍처 다이어그램\n\n**테이블 요정:**\n• 미니 모바일 앱 데모\n• 데이터 흐름 다이어그램' }
+                ]
+            },
+            {
+                phase: { num: 6, title: '테스트 & 배포', desc: '브라우저 테스트 완료, GitHub Pages 배포 준비...' },
+                stats: { lines: 2300, slides: 11, features: 6 },
+                messages: [
+                    { role: 'user', content: '훌륭해. 여기까지 커밋과 푸시를 해보자. https://github.com/outliner-coach/codingagent_lecture.git 여기에 올려줘.' },
+                    { role: 'agent', content: '커밋과 푸시가 완료되었습니다! ✅\n\n📝 커밋 메시지:\n"feat: 케이스 스터디 슬라이드 인터랙티브 고도화"\n\n🔗 GitHub: github.com/outliner-coach/codingagent_lecture\n\nGitHub Pages를 활성화하시면 웹에서 바로 보실 수 있습니다!' }
+                ]
+            },
+            {
+                phase: { num: 7, title: '메타 예제 완성', desc: '이 슬라이드 자체가 AI 협업의 결과물입니다!' },
+                stats: { lines: 2500, slides: 11, features: 7 },
+                messages: [
+                    { role: 'user', content: '아주 마음에 들어. 이제 \'발표 자료 슬라이드 웹페이지 만들기\'도 같은 방식으로 개선해보자. 너와 나의 현재 대화 자체가 좋은 보기가 될 거 같아.' },
+                    { role: 'agent', content: '완벽한 메타 예제네요! 🎯\n\n지금 보고 계신 이 채팅 시뮬레이션이 바로 실제 대화를 재현한 것입니다.\n\n**이 슬라이드의 의미:**\n• AI가 만든 발표자료 안에\n• AI와의 대화 과정이 담겨있고\n• 그 대화도 AI가 구현했습니다\n\n🔄 무한 메타!' }
+                ]
+            }
+        ];
+
+        let currentPresChatIndex = 0;
+        let presAutoPlayInterval = null;
+
+        function switchPresentationTab(tabId) {
+            document.querySelectorAll('.pres-main-tab').forEach(btn => {
+                const isActive = btn.id === `pres-tab-${tabId}`;
+                if(isActive) {
+                    btn.classList.add('bg-green-600', 'text-white', 'border-green-500');
+                    btn.classList.remove('bg-slate-800', 'text-slate-400', 'border-slate-600');
+                } else {
+                    btn.classList.remove('bg-green-600', 'text-white', 'border-green-500');
+                    btn.classList.add('bg-slate-800', 'text-slate-400', 'border-slate-600');
+                }
+            });
+            document.querySelectorAll('.pres-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`pres-content-${tabId}`).classList.remove('hidden');
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function renderPresChat(index) {
+            if(index < 0 || index >= presChatData.length) return;
+            currentPresChatIndex = index;
+            
+            const data = presChatData[index];
+            const chatDisplay = document.getElementById('pres-chat-display');
+            
+            // Update phase
+            const phasePanel = document.getElementById('pres-current-phase');
+            phasePanel.innerHTML = `
+                <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                    <i data-lucide="activity" class="w-4 h-4"></i> 현재 작업 단계
+                </h4>
+                <div class="bg-slate-900 rounded-lg p-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">${data.phase.num}</div>
+                        <div class="font-bold text-white">${data.phase.title}</div>
+                    </div>
+                    <p class="text-sm text-slate-400">${data.phase.desc}</p>
+                </div>
+            `;
+            
+            // Update stats with animation
+            animateNumber('pres-stat-lines', data.stats.lines);
+            animateNumber('pres-stat-slides', data.stats.slides);
+            animateNumber('pres-stat-features', data.stats.features);
+            
+            // Render chat messages
+            chatDisplay.innerHTML = '';
+            data.messages.forEach((msg, i) => {
+                setTimeout(() => {
+                    const bubble = document.createElement('div');
+                    const isUser = msg.role === 'user';
+                    bubble.className = `p-3 rounded-xl text-sm leading-relaxed ${isUser ? 'ml-auto bg-blue-600 text-white rounded-br-sm max-w-[85%]' : 'mr-auto bg-slate-700 border border-slate-600 text-slate-200 rounded-bl-sm max-w-[90%]'}`;
+                    bubble.style.animation = 'slideIn 0.3s ease-out';
+                    
+                    const label = isUser ? '👤 You' : '🤖 Agent';
+                    bubble.innerHTML = `<strong class="block mb-1 text-xs opacity-70">${label}</strong>${msg.content.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}`;
+                    
+                    chatDisplay.appendChild(bubble);
+                    chatDisplay.scrollTop = chatDisplay.scrollHeight;
+                }, i * 300);
+            });
+            
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function animateNumber(elementId, target) {
+            const el = document.getElementById(elementId);
+            const current = parseInt(el.textContent) || 0;
+            const diff = target - current;
+            const steps = 20;
+            const stepValue = diff / steps;
+            let step = 0;
+            
+            const interval = setInterval(() => {
+                step++;
+                el.textContent = Math.round(current + stepValue * step);
+                if(step >= steps) {
+                    el.textContent = target;
+                    clearInterval(interval);
+                }
+            }, 30);
+        }
+
+        function nextPresChat() {
+            if(currentPresChatIndex < presChatData.length - 1) {
+                renderPresChat(currentPresChatIndex + 1);
+            }
+        }
+
+        function prevPresChat() {
+            if(currentPresChatIndex > 0) {
+                renderPresChat(currentPresChatIndex - 1);
+            }
+        }
+
+        function autoPlayPresChat() {
+            if(presAutoPlayInterval) {
+                clearInterval(presAutoPlayInterval);
+                presAutoPlayInterval = null;
+                document.getElementById('pres-autoplay-btn').innerHTML = '<i data-lucide="play" class="w-4 h-4"></i>';
+                if(window.lucide) lucide.createIcons();
+                return;
+            }
+            
+            document.getElementById('pres-autoplay-btn').innerHTML = '<i data-lucide="pause" class="w-4 h-4"></i>';
+            if(window.lucide) lucide.createIcons();
+            
+            presAutoPlayInterval = setInterval(() => {
+                if(currentPresChatIndex < presChatData.length - 1) {
+                    nextPresChat();
+                } else {
+                    clearInterval(presAutoPlayInterval);
+                    presAutoPlayInterval = null;
+                    document.getElementById('pres-autoplay-btn').innerHTML = '<i data-lucide="play" class="w-4 h-4"></i>';
+                    if(window.lucide) lucide.createIcons();
+                }
+            }, 3000);
+        }
+
+        // Timeline Detail Data
+        const timelineDetailData = [
+            {
+                title: '요구사항 파악',
+                description: '사용자가 프로젝트 폴더 분석을 요청하면서 작업이 시작되었습니다.',
+                details: ['기존 프로젝트 2개 발견 (주차등록, 테이블요정)', 'Markdown 요구사항 파일 분석', '슬라이드 구조 초안 작성'],
+                code: '> 현재 프로젝트 폴더의 내용을 파악해봐.\n\n📁 parking_registration/\n📁 table fairy assist/\n📄 coding agent for non-developers.md'
+            },
+            {
+                title: '계획 수립 (Mini-Plan)',
+                description: 'AGENTS.md 규칙에 따라 실행 전 계획을 수립하고 승인을 받았습니다.',
+                details: ['슬라이드 10개 구성 계획', 'AI 테마 다크모드 디자인', '인터랙티브 요소 포함'],
+                code: '## Mini-Plan\n- Goal: 비개발자용 코딩 에이전트 강의 슬라이드\n- Scope: HTML/CSS/JS 단일 파일\n- Options: A) 기본 슬라이드 / B) 인터랙티브'
+            },
+            {
+                title: '기본 슬라이드 생성',
+                description: '계획에 따라 HTML/CSS/JS 코드를 작성하여 기본 슬라이드를 생성했습니다.',
+                details: ['index.html 파일 생성', 'Tailwind CSS + 커스텀 스타일', '키보드 네비게이션 구현'],
+                code: '// 생성된 파일\nindex.html (800+ lines)\n\n// 주요 기능\n- 슬라이드 스크롤 네비게이션\n- 진행률 바\n- 반응형 디자인'
+            },
+            {
+                title: '인터랙티브 요소 추가',
+                description: '추가 요청에 따라 AI 원리, 업무 시나리오 등 인터랙티브 콘텐츠를 통합했습니다.',
+                details: ['usecases.html 통합', 'ai_principle_learning.tsx 변환', 'Next Token Game 구현'],
+                code: '// 추가된 인터랙티브 요소\n- AI 원리: Next Token Prediction 게임\n- 업무 시나리오: 채팅 시뮬레이션\n- 탭 전환 UI'
+            },
+            {
+                title: '테스트 & 배포',
+                description: '브라우저 테스트 후 GitHub에 푸시하고 Pages 배포를 준비했습니다.',
+                details: ['Playwright 브라우저 테스트', 'Git 커밋 및 푸시', 'GitHub Pages 배포'],
+                code: 'git add .\ngit commit -m "feat: 인터랙티브 고도화"\ngit push origin main\n\n✅ https://outliner-coach.github.io/codingagent_lecture/'
+            }
+        ];
+
+        function showTimelineDetail(index) {
+            const data = timelineDetailData[index];
+            if(!data) return;
+            
+            const panel = document.getElementById('timeline-detail-panel');
+            panel.classList.remove('hidden');
+            panel.innerHTML = `
+                <div class="flex items-start gap-4">
+                    <div class="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold flex-shrink-0">${index + 1}</div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-white text-lg m-0 mb-2">${data.title}</h4>
+                        <p class="text-slate-300 text-sm mb-3">${data.description}</p>
+                        <div class="bg-slate-800 rounded-lg p-3 mb-3 font-mono text-xs text-green-400 overflow-x-auto">
+                            <pre class="m-0">${data.code}</pre>
+                        </div>
+                        <ul class="space-y-1">
+                            ${data.details.map(d => `<li class="flex items-start gap-2 text-xs text-slate-400"><i data-lucide="check" class="w-3 h-3 text-green-400 mt-0.5 flex-shrink-0"></i>${d}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            if(window.lucide) lucide.createIcons();
+        }
+
+        // ============================================
         // 초기화
         // ============================================
         window.addEventListener('load', () => {
@@ -2329,6 +2845,9 @@ function getTableData() {
             
             // 테이블 요정 데모 초기화
             renderFairyArtists();
+            
+            // 발표자료 채팅 초기화
+            renderPresChat(0);
             
             if(window.lucide) lucide.createIcons();
         });
