@@ -240,9 +240,54 @@
         }
         @keyframes fadeInOut { 0%, 100% { opacity: 0; } 10%, 90% { opacity: 1; } }
         @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 
         /* Tailwind CSS Override helpers for new slides */
         .tab-btn.active { background-color: #4f46e5; color: white; border-color: #4f46e5; }
+
+        /* 주차등록 시뮬레이션 스타일 */
+        .pw-step-card.active {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+        .pw-step-dot {
+            transition: all 0.3s ease;
+        }
+        #browser-mock-content {
+            transition: all 0.3s ease;
+        }
+        #browser-mock-content input:disabled {
+            cursor: default;
+        }
+
+        /* 테이블 요정 데모 스타일 */
+        .fairy-table-tab {
+            transition: all 0.2s ease;
+        }
+        .fairy-table-tab.active {
+            transform: scale(1.02);
+        }
+        .animate-slideDown {
+            animation: slideDown 0.3s ease-out;
+        }
+
+        /* 아키텍처 다이어그램 스타일 */
+        .arch-node, .dataflow-node {
+            transition: all 0.3s ease;
+        }
+        .arch-arrow, .dataflow-arrow {
+            animation: pulse 2s infinite;
+        }
+
+        /* 반응형 조정 */
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 20px;
+            }
+            #browser-mock-content {
+                min-height: 280px !important;
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-900 text-slate-100">
@@ -258,15 +303,16 @@
         <ul>
             <li><a href="#slide-1">1. 표지</a></li>
             <li><a href="#slide-2">2. 강의 목표</a></li>
-            <li><a href="#slide-principles">3. AI 작동 원리 (New)</a></li>
+            <li><a href="#slide-principles">3. AI 작동 원리</a></li>
             <li><a href="#slide-3">4. 코딩 에이전트란?</a></li>
             <li><a href="#slide-4">5. 주요 도구 소개</a></li>
             <li><a href="#slide-part2">Part 2: Case Studies</a></li>
-            <li><a href="#slide-usecases">6. 업무 자동화 시나리오 (New)</a></li>
-            <li><a href="#slide-5">7. Case 1: 주차등록</a></li>
-            <li><a href="#slide-7">8. Case 2: 발표자료</a></li>
-            <li><a href="#slide-8">9. Case 3: 테이블 요정</a></li>
-            <li><a href="#slide-9">10. 핵심 메시지</a></li>
+            <li><a href="#slide-usecases">6. 업무 자동화 시나리오</a></li>
+            <li><a href="#slide-5">7. Case 1: 주차등록 🎮</a></li>
+            <li><a href="#slide-6">8. Case 2: 발표자료</a></li>
+            <li><a href="#slide-7">9. Case 3: 테이블 요정 🎮</a></li>
+            <li><a href="#slide-8">10. 핵심 메시지</a></li>
+            <li><a href="#slide-9">11. Q&A</a></li>
         </ul>
     </div>
 
@@ -308,7 +354,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">2 / 12</div>
+            <div class="slide-number">2 / 11</div>
         </section>
 
         <!-- [NEW] 슬라이드 3: AI 작동 원리 (Principles) -->
@@ -589,7 +635,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">3 / 12</div>
+            <div class="slide-number">3 / 11</div>
         </section>
 
         <!-- 슬라이드 4: 코딩 에이전트란? -->
@@ -616,7 +662,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">4 / 12</div>
+            <div class="slide-number">4 / 11</div>
         </section>
 
         <!-- 슬라이드 5: 주요 도구 -->
@@ -667,7 +713,7 @@
                     <p style="margin: 0;">오늘은 이 도구들을 활용해 <strong>"코딩 한 줄 안 쓰고"</strong> 결과를 만드는 법을 봅니다.</p>
                 </div>
             </div>
-            <div class="slide-number">5 / 12</div>
+            <div class="slide-number">5 / 11</div>
         </section>
 
         <!-- Part 2 구분자 -->
@@ -735,77 +781,268 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-number">6 / 12</div>
+            <div class="slide-number">6 / 11</div>
         </section>
 
-        <!-- Case 1: 주차등록 자동화 -->
-        <section class="slide" id="slide-5">
-            <div class="content">
-                <span class="section-tag">Case 1</span>
-                <h2>🚗 주차등록 자동화 시스템</h2>
-                <div class="highlight-box">
-                    <h4>프로젝트 개요</h4>
-                    <p>슬랙에서 이모지만 누르면, <strong>사내 서버가 관리자 페이지에 접속해 주차를 대신 등록</strong>해주는 시스템</p>
+        <!-- Case 1: 주차등록 자동화 (인터랙티브) -->
+        <section class="slide bg-slate-900" id="slide-5">
+            <div class="content max-w-7xl w-full">
+                <div class="text-center mb-4">
+                    <span class="section-tag">Case 1: Interactive Demo</span>
+                    <h2 style="font-size: 42px; font-weight: 700;">🚗 주차등록 자동화 시스템</h2>
+                    <p class="text-slate-400 text-lg">슬랙 이모지 클릭 → 자동 주차등록 → 결과 알림까지 완전 자동화</p>
                 </div>
-                <div class="icon-grid" style="grid-template-columns: repeat(3, 1fr);">
-                    <div class="icon-item">
-                        <span class="emoji">📊</span>
-                        <h4>Google Sheets</h4>
-                        <p>신청 내역 DB</p>
-                    </div>
-                    <div class="icon-item">
-                        <span class="emoji">💬</span>
-                        <h4>Slack</h4>
-                        <p>신청 및 알림 UI</p>
-                    </div>
-                    <div class="icon-item">
-                        <span class="emoji">🤖</span>
-                        <h4>Playwright</h4>
-                        <p>웹 브라우저 자동화</p>
-                    </div>
-                </div>
-            </div>
-            <div class="slide-number">7 / 12</div>
-        </section>
 
-        <!-- Case 1: 시스템 구조 -->
-        <section class="slide" id="slide-6">
-            <div class="content">
-                <span class="section-tag">Case 1: Architecture</span>
-                <h2>⚙️ 시스템 동작 원리</h2>
-                <div class="diagram">
-                    <div class="flow-chart" style="flex-direction: column; gap: 20px;">
-                        <div class="flow-box" style="background: #1e293b; border-color: #94a3b8;">
-                            👤 <strong>사용자</strong><br>
-                            <span style="font-size: 16px; color: #cbd5e1;">슬랙 채널에서 :주차등록: 이모지 클릭</span>
-                        </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-box" style="background: #0f172a;">
-                            📋 <strong>Google Sheets (Workflow)</strong><br>
-                            <span style="font-size: 16px; color: #cbd5e1;">차량번호, 요청시간 등 정보 자동 기록</span>
-                        </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-box" style="min-width: 400px;">
-                            🖥️ <strong>사내 서버 (Node.js + Express)</strong><br>
-                            <div style="text-align: left; margin-top: 10px; padding-left: 20px; font-size: 16px; color: #cbd5e1;">
-                                1. <strong>Schedule:</strong> 10분마다 시트 데이터 동기화<br>
-                                2. <strong>Logic:</strong> 예약된 시간에 작업 실행<br>
-                                3. <strong>Playwright:</strong> 관리자 페이지 로그인 & 등록 수행
+                <!-- Main Tabs -->
+                <div class="flex justify-center gap-3 mb-6">
+                    <button onclick="switchParkingTab('simulation')" id="parking-tab-sim" class="parking-main-tab active px-5 py-2.5 rounded-full border border-indigo-500 bg-indigo-600 text-white font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="play-circle" class="w-4 h-4"></i> Playwright 시뮬레이션
+                    </button>
+                    <button onclick="switchParkingTab('architecture')" id="parking-tab-arch" class="parking-main-tab px-5 py-2.5 rounded-full border border-slate-600 bg-slate-800 text-slate-400 font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="git-branch" class="w-4 h-4"></i> 시스템 아키텍처
+                    </button>
+                </div>
+
+                <!-- Tab Content: Simulation -->
+                <div id="parking-content-simulation" class="parking-tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left: Browser Mock -->
+                        <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-2xl">
+                            <div class="bg-slate-900 px-4 py-2 flex items-center gap-2 border-b border-slate-700">
+                                <div class="flex gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                                    <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                                </div>
+                                <div class="flex-1 bg-slate-700 rounded px-3 py-1 text-xs text-slate-400 ml-2">
+                                    <i data-lucide="lock" class="w-3 h-3 inline mr-1"></i>
+                                    https://parking-admin.example.kr/login
+                                </div>
+                            </div>
+                            <div id="browser-mock-content" class="p-6 min-h-[320px] flex flex-col items-center justify-center bg-gradient-to-b from-slate-800 to-slate-900">
+                                <!-- Dynamic content injected by JS -->
+                                <div class="text-center">
+                                    <div class="text-6xl mb-4">🔐</div>
+                                    <h3 class="text-xl font-bold text-white mb-2">주차 관리 시스템</h3>
+                                    <div class="space-y-3 w-64 mx-auto">
+                                        <input type="text" value="백패커" disabled class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm">
+                                        <input type="password" value="••••" disabled class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm">
+                                        <button class="w-full bg-blue-600 text-white rounded-lg py-2 font-bold text-sm">로그인</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flow-arrow">↓</div>
-                        <div class="flow-box" style="background: #1e293b; border-color: #94a3b8;">
-                            📢 <strong>Slack Bot</strong><br>
-                            <span style="font-size: 16px; color: #cbd5e1;">"무료주차 1시간 등록 완료" 댓글 알림</span>
+
+                        <!-- Right: Steps & Code -->
+                        <div class="space-y-4">
+                            <!-- Step Progress -->
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm text-slate-400">자동화 단계</span>
+                                <div class="flex gap-1">
+                                    <span id="pw-step-1" class="pw-step-dot w-3 h-3 rounded-full bg-indigo-500"></span>
+                                    <span id="pw-step-2" class="pw-step-dot w-3 h-3 rounded-full bg-slate-600"></span>
+                                    <span id="pw-step-3" class="pw-step-dot w-3 h-3 rounded-full bg-slate-600"></span>
+                                    <span id="pw-step-4" class="pw-step-dot w-3 h-3 rounded-full bg-slate-600"></span>
+                                    <span id="pw-step-5" class="pw-step-dot w-3 h-3 rounded-full bg-slate-600"></span>
+                                </div>
+                            </div>
+
+                            <!-- Step Cards -->
+                            <div id="pw-steps-container" class="space-y-2">
+                                <div class="pw-step-card active bg-indigo-900/30 border border-indigo-500/50 rounded-xl p-4 cursor-pointer transition-all" onclick="goToPwStep(0)">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">1</div>
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-white text-sm">로그인 페이지 접속</h4>
+                                            <p class="text-xs text-slate-400">page.goto('https://parking-admin...')</p>
+                                        </div>
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-indigo-400 pw-check hidden"></i>
+                                    </div>
+                                </div>
+                                <div class="pw-step-card bg-slate-800 border border-slate-700 rounded-xl p-4 cursor-pointer transition-all hover:border-slate-600" onclick="goToPwStep(1)">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 font-bold text-sm">2</div>
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-slate-300 text-sm">아이디/비밀번호 입력 & 로그인</h4>
+                                            <p class="text-xs text-slate-500">page.fill('#id', '백패커')</p>
+                                        </div>
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-indigo-400 pw-check hidden"></i>
+                                    </div>
+                                </div>
+                                <div class="pw-step-card bg-slate-800 border border-slate-700 rounded-xl p-4 cursor-pointer transition-all hover:border-slate-600" onclick="goToPwStep(2)">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 font-bold text-sm">3</div>
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-slate-300 text-sm">차량번호 검색</h4>
+                                            <p class="text-xs text-slate-500">page.fill('#carNumber', '12가3456')</p>
+                                        </div>
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-indigo-400 pw-check hidden"></i>
+                                    </div>
+                                </div>
+                                <div class="pw-step-card bg-slate-800 border border-slate-700 rounded-xl p-4 cursor-pointer transition-all hover:border-slate-600" onclick="goToPwStep(3)">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 font-bold text-sm">4</div>
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-slate-300 text-sm">무료 1시간 할인 등록</h4>
+                                            <p class="text-xs text-slate-500">page.click('무료 1시간할인')</p>
+                                        </div>
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-indigo-400 pw-check hidden"></i>
+                                    </div>
+                                </div>
+                                <div class="pw-step-card bg-slate-800 border border-slate-700 rounded-xl p-4 cursor-pointer transition-all hover:border-slate-600" onclick="goToPwStep(4)">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 font-bold text-sm">5</div>
+                                        <div class="flex-1">
+                                            <h4 class="font-bold text-slate-300 text-sm">슬랙 결과 알림</h4>
+                                            <p class="text-xs text-slate-500">slack.postMessage('등록 완료!')</p>
+                                        </div>
+                                        <i data-lucide="check-circle" class="w-5 h-5 text-green-400 pw-check hidden"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Control Buttons -->
+                            <div class="flex gap-3 mt-4">
+                                <button onclick="resetPwSimulation()" class="flex-1 py-2 px-4 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all">
+                                    <i data-lucide="rotate-ccw" class="w-4 h-4"></i> 처음부터
+                                </button>
+                                <button onclick="autoPlayPwSimulation()" id="pw-autoplay-btn" class="flex-1 py-2 px-4 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-bold flex items-center justify-center gap-2 transition-all">
+                                    <i data-lucide="play" class="w-4 h-4"></i> 자동 재생
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Code Snippet Panel -->
+                    <div class="mt-6 bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
+                        <div class="px-4 py-2 bg-slate-800 border-b border-slate-700 flex items-center gap-2">
+                            <i data-lucide="code" class="w-4 h-4 text-green-400"></i>
+                            <span class="text-sm font-bold text-slate-300">server.js - processCarRegistration()</span>
+                        </div>
+                        <pre id="pw-code-display" class="p-4 text-sm text-green-400 font-mono overflow-x-auto"><code>// 1. 로그인 페이지 접속
+await page.goto('https://a17687.pweb.kr/login');
+await page.waitForLoadState('networkidle');</code></pre>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Architecture -->
+                <div id="parking-content-architecture" class="parking-tab-content hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- Architecture Diagram -->
+                        <div class="lg:col-span-2 bg-slate-800 rounded-2xl border border-slate-700 p-6 relative overflow-hidden">
+                            <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
+                                <i data-lucide="git-branch" class="w-5 h-5 text-indigo-400"></i> 시스템 아키텍처
+                            </h3>
+                            
+                            <!-- Flow Diagram -->
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- User -->
+                                <div class="arch-node cursor-pointer hover:scale-105 transition-transform" onclick="showArchDetail('user')">
+                                    <div class="bg-slate-700 border-2 border-slate-500 rounded-xl px-6 py-4 text-center min-w-[200px] hover:border-indigo-400 transition-colors">
+                                        <div class="text-3xl mb-2">👤</div>
+                                        <div class="font-bold text-white">사용자</div>
+                                        <div class="text-xs text-slate-400">슬랙에서 :주차등록: 클릭</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="arch-arrow text-indigo-400 animate-pulse">
+                                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
+                                </div>
+
+                                <!-- Slack Workflow -->
+                                <div class="arch-node cursor-pointer hover:scale-105 transition-transform" onclick="showArchDetail('slack')">
+                                    <div class="bg-purple-900/30 border-2 border-purple-500/50 rounded-xl px-6 py-4 text-center min-w-[200px] hover:border-purple-400 transition-colors">
+                                        <div class="text-3xl mb-2">💬</div>
+                                        <div class="font-bold text-purple-300">Slack Workflow</div>
+                                        <div class="text-xs text-purple-400">정보 입력 폼 표시</div>
+                                    </div>
+                                </div>
+
+                                <div class="arch-arrow text-indigo-400 animate-pulse">
+                                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
+                                </div>
+
+                                <!-- Google Sheets -->
+                                <div class="arch-node cursor-pointer hover:scale-105 transition-transform" onclick="showArchDetail('sheets')">
+                                    <div class="bg-green-900/30 border-2 border-green-500/50 rounded-xl px-6 py-4 text-center min-w-[200px] hover:border-green-400 transition-colors">
+                                        <div class="text-3xl mb-2">📊</div>
+                                        <div class="font-bold text-green-300">Google Sheets</div>
+                                        <div class="text-xs text-green-400">신청 데이터 저장</div>
+                                    </div>
+                                </div>
+
+                                <div class="arch-arrow text-indigo-400 animate-pulse">
+                                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
+                                </div>
+
+                                <!-- Node.js Server -->
+                                <div class="arch-node cursor-pointer hover:scale-105 transition-transform" onclick="showArchDetail('server')">
+                                    <div class="bg-blue-900/30 border-2 border-blue-500/50 rounded-xl px-6 py-4 text-center min-w-[280px] hover:border-blue-400 transition-colors">
+                                        <div class="text-3xl mb-2">🖥️</div>
+                                        <div class="font-bold text-blue-300">Node.js Server</div>
+                                        <div class="text-xs text-blue-400">스케줄링 + Playwright 자동화</div>
+                                    </div>
+                                </div>
+
+                                <div class="arch-arrow text-indigo-400 animate-pulse">
+                                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
+                                </div>
+
+                                <!-- Slack Bot -->
+                                <div class="arch-node cursor-pointer hover:scale-105 transition-transform" onclick="showArchDetail('bot')">
+                                    <div class="bg-orange-900/30 border-2 border-orange-500/50 rounded-xl px-6 py-4 text-center min-w-[200px] hover:border-orange-400 transition-colors">
+                                        <div class="text-3xl mb-2">🤖</div>
+                                        <div class="font-bold text-orange-300">Slack Bot</div>
+                                        <div class="text-xs text-orange-400">결과 댓글 알림</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detail Panel -->
+                        <div class="bg-slate-800 rounded-2xl border border-slate-700 p-5 flex flex-col">
+                            <h3 class="text-base font-bold text-slate-400 mb-4 flex items-center gap-2">
+                                <i data-lucide="info" class="w-4 h-4"></i> 컴포넌트 상세
+                            </h3>
+                            <div id="arch-detail-panel" class="flex-1 flex flex-col justify-center">
+                                <div class="text-center text-slate-500">
+                                    <i data-lucide="mouse-pointer-click" class="w-10 h-10 mx-auto mb-3 opacity-50"></i>
+                                    <p class="text-sm">좌측 다이어그램의<br>컴포넌트를 클릭하세요</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">⚡</div>
+                            <div class="font-bold text-white text-sm">Express.js</div>
+                            <div class="text-xs text-slate-500">웹 서버</div>
+                        </div>
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">🎭</div>
+                            <div class="font-bold text-white text-sm">Playwright</div>
+                            <div class="text-xs text-slate-500">브라우저 자동화</div>
+                        </div>
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">⏰</div>
+                            <div class="font-bold text-white text-sm">node-schedule</div>
+                            <div class="text-xs text-slate-500">예약 작업</div>
+                        </div>
+                        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-4 text-center">
+                            <div class="text-2xl mb-2">🐳</div>
+                            <div class="font-bold text-white text-sm">Docker</div>
+                            <div class="text-xs text-slate-500">컨테이너화</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="slide-number">8 / 12</div>
+            <div class="slide-number">7 / 11</div>
         </section>
 
         <!-- Case 2: 발표자료 만들기 -->
-        <section class="slide" id="slide-7">
+        <section class="slide" id="slide-6">
             <div class="content">
                 <span class="section-tag">Case 2: Meta-Example</span>
                 <h2>📑 발표 자료 슬라이드 웹페이지 만들기</h2>
@@ -843,60 +1080,276 @@
                     <strong>💡 Insight:</strong> PPT 도형을 그리는 시간보다, <strong>"글로 명확한 요구사항을 적는 시간"</strong>이 더 중요해졌습니다.
                 </div>
             </div>
-            <div class="slide-number">9 / 12</div>
+            <div class="slide-number">8 / 11</div>
         </section>
 
-        <!-- Case 3: 테이블 요정 -->
-        <section class="slide" id="slide-8">
-            <div class="content">
-                <span class="section-tag">Case 3: Mobile Web App</span>
-                <h2>🧚 HMA 테이블 요정 어시스턴트</h2>
-                <div class="highlight-box">
-                    <h4>프로젝트 개요</h4>
-                    <p>수백 명의 작가 정보와 행사 가이드를 <strong>종이 인쇄물 대신 "모바일 웹 앱"으로</strong> 제작</p>
+        <!-- Case 3: 테이블 요정 (인터랙티브) -->
+        <section class="slide bg-slate-900" id="slide-7">
+            <div class="content max-w-7xl w-full">
+                <div class="text-center mb-4">
+                    <span class="section-tag">Case 3: Interactive Demo</span>
+                    <h2 style="font-size: 42px; font-weight: 700;">🧚 HMA 테이블 요정 어시스턴트</h2>
+                    <p class="text-slate-400 text-lg">수백 명의 작가 정보를 모바일 웹 앱으로 제작</p>
                 </div>
-                
-                <div class="diagram">
-                    <div class="flow-chart" style="justify-content: space-around;">
-                        <div style="text-align: center;">
-                            <div class="flow-box" style="margin-bottom: 10px; background: #1e293b;">
-                                <span style="font-size: 30px;">📄</span><br>PDF / Excel
+
+                <!-- Main Tabs -->
+                <div class="flex justify-center gap-3 mb-6">
+                    <button onclick="switchFairyTab('demo')" id="fairy-tab-demo" class="fairy-main-tab active px-5 py-2.5 rounded-full border border-purple-500 bg-purple-600 text-white font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="smartphone" class="w-4 h-4"></i> 앱 미리보기
+                    </button>
+                    <button onclick="switchFairyTab('dataflow')" id="fairy-tab-flow" class="fairy-main-tab px-5 py-2.5 rounded-full border border-slate-600 bg-slate-800 text-slate-400 font-bold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="workflow" class="w-4 h-4"></i> 데이터 흐름
+                    </button>
+                </div>
+
+                <!-- Tab Content: Demo -->
+                <div id="fairy-content-demo" class="fairy-tab-content">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <!-- Left: Mobile App Mock -->
+                        <div class="flex justify-center">
+                            <div class="bg-slate-800 rounded-[40px] p-3 shadow-2xl border-4 border-slate-700" style="width: 320px;">
+                                <!-- Phone Notch -->
+                                <div class="bg-black rounded-t-[32px] relative overflow-hidden">
+                                    <div class="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-5 bg-slate-800 rounded-full"></div>
+                                    
+                                    <!-- App Content -->
+                                    <div class="pt-8 pb-4 px-3 min-h-[480px] bg-gradient-to-b from-amber-100 to-amber-200 rounded-t-[28px]" style="font-family: 'Noto Sans KR', sans-serif;">
+                                        <!-- App Header -->
+                                        <div class="bg-white/90 rounded-2xl p-4 mb-3 shadow-sm text-center">
+                                            <h3 class="text-lg font-bold text-purple-800 m-0">🧚 테이블 요정 어시스트</h3>
+                                            <p class="text-xs text-amber-700 m-0 mt-1">함께라서 가능한 일 ✨</p>
+                                            
+                                            <!-- Search Bar -->
+                                            <div class="mt-3 flex gap-2">
+                                                <input type="text" placeholder="작가명 검색..." class="flex-1 bg-gray-100 border-0 rounded-lg px-3 py-2 text-xs" id="fairy-search-input">
+                                                <button class="bg-purple-600 text-white px-3 py-2 rounded-lg text-xs" onclick="fairySearch()">🔍</button>
+                                            </div>
+                                            
+                                            <!-- Guide Button -->
+                                            <button onclick="toggleFairyGuide()" class="w-full mt-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white py-2 rounded-lg text-xs font-bold">📖 요정 가이드</button>
+                                        </div>
+
+                                        <!-- Guide Section (Hidden by default) -->
+                                        <div id="fairy-guide-section" class="hidden bg-white/90 rounded-2xl p-4 mb-3 shadow-sm animate-slideDown">
+                                            <button onclick="toggleFairyGuide()" class="text-purple-600 text-xs font-bold mb-2">← 닫기</button>
+                                            <h4 class="text-sm font-bold text-purple-800 m-0 mb-2">🌟 테이블 요정 가이드</h4>
+                                            <div class="bg-purple-50 rounded-lg p-2 text-xs text-purple-900">
+                                                <p class="m-0 mb-1"><strong>✨ 요정의 역할</strong></p>
+                                                <p class="m-0 text-purple-700" style="font-size: 10px;">작가님들의 '첫 친구'가 되어주세요!</p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Table Tabs -->
+                                        <div class="flex gap-2 overflow-x-auto pb-2 mb-3" id="fairy-table-tabs">
+                                            <button onclick="selectFairyTable(0)" class="fairy-table-tab active flex-shrink-0 bg-purple-600 text-white px-3 py-2 rounded-xl text-xs font-bold">
+                                                테이블 1<br><span style="font-size: 9px; opacity: 0.8;">한진주·김다정</span>
+                                            </button>
+                                            <button onclick="selectFairyTable(1)" class="fairy-table-tab flex-shrink-0 bg-white/80 text-purple-800 px-3 py-2 rounded-xl text-xs font-bold">
+                                                테이블 2<br><span style="font-size: 9px; opacity: 0.6;">이수진·박민서</span>
+                                            </button>
+                                            <button onclick="selectFairyTable(2)" class="fairy-table-tab flex-shrink-0 bg-white/80 text-purple-800 px-3 py-2 rounded-xl text-xs font-bold">
+                                                테이블 3<br><span style="font-size: 9px; opacity: 0.6;">최유나·정하은</span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Artist Cards -->
+                                        <div id="fairy-artist-grid" class="grid grid-cols-2 gap-2">
+                                            <!-- Injected by JS -->
+                                        </div>
+
+                                        <!-- Artist Detail (Hidden) -->
+                                        <div id="fairy-artist-detail" class="hidden bg-white rounded-2xl p-4 shadow-lg animate-slideDown">
+                                            <!-- Injected by JS -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Phone Bottom -->
+                                <div class="bg-black h-4 rounded-b-[32px] flex justify-center items-center">
+                                    <div class="w-24 h-1 bg-slate-600 rounded-full"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="flow-arrow">→</div>
-                        <div style="text-align: center;">
-                            <div class="flow-box" style="margin-bottom: 10px; border-color: var(--accent-color);">
-                                <span style="font-size: 30px;">🤖</span><br>Coding Agent
+
+                        <!-- Right: Features & Code -->
+                        <div class="space-y-4">
+                            <div class="bg-slate-800 rounded-xl border border-slate-700 p-5">
+                                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                                    <i data-lucide="sparkles" class="w-5 h-5 text-purple-400"></i> 주요 기능
+                                </h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                        <div class="w-8 h-8 bg-purple-900/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="layout-grid" class="w-4 h-4 text-purple-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm m-0">테이블별 작가 조회</h4>
+                                            <p class="text-xs text-slate-400 m-0 mt-1">각 테이블 담당 요정과 배정된 작가 확인</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                        <div class="w-8 h-8 bg-purple-900/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="search" class="w-4 h-4 text-purple-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm m-0">작가 검색</h4>
+                                            <p class="text-xs text-slate-400 m-0 mt-1">작가명 또는 요정 이름으로 빠른 검색</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                        <div class="w-8 h-8 bg-purple-900/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="book-open" class="w-4 h-4 text-purple-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm m-0">요정 가이드</h4>
+                                            <p class="text-xs text-slate-400 m-0 mt-1">아이스브레이킹 질문, 상황별 대처법 등</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start gap-3 p-3 bg-slate-900/50 rounded-lg">
+                                        <div class="w-8 h-8 bg-purple-900/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                                            <i data-lucide="external-link" class="w-4 h-4 text-purple-400"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm m-0">작가 홈 연결</h4>
+                                            <p class="text-xs text-slate-400 m-0 mt-1">아이디어스 작가 프로필 바로가기</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="flow-arrow">→</div>
-                        <div style="text-align: center;">
-                            <div class="flow-box" style="margin-bottom: 10px; background: var(--gradient-1); color: white; border: none;">
-                                <span style="font-size: 30px;">📱</span><br>Mobile Web
+
+                            <!-- Code Preview -->
+                            <div class="bg-slate-900 rounded-xl border border-slate-700 overflow-hidden">
+                                <div class="px-4 py-2 bg-slate-800 border-b border-slate-700 flex items-center gap-2">
+                                    <i data-lucide="code" class="w-4 h-4 text-green-400"></i>
+                                    <span class="text-sm font-bold text-slate-300">Code.gs - getTableData()</span>
+                                </div>
+                                <pre class="p-4 text-xs text-green-400 font-mono overflow-x-auto"><code>function getTableData() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const artistSheet = ss.getSheetByName('artist_list');
+  const tableSheet = ss.getSheetByName('table_info');
+  // 데이터 조합 후 JSON 반환
+  return Object.values(tables);
+}</code></pre>
+                            </div>
+
+                            <!-- Key Points -->
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-green-900/20 border border-green-500/30 rounded-xl p-4 text-center">
+                                    <div class="text-2xl mb-1">☁️</div>
+                                    <div class="font-bold text-green-300 text-sm">서버리스</div>
+                                    <div class="text-xs text-green-400/70">Google Apps Script</div>
+                                </div>
+                                <div class="bg-blue-900/20 border border-blue-500/30 rounded-xl p-4 text-center">
+                                    <div class="text-2xl mb-1">🔄</div>
+                                    <div class="font-bold text-blue-300 text-sm">실시간 반영</div>
+                                    <div class="text-xs text-blue-400/70">시트 수정 즉시 적용</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <h3>💡 핵심 포인트</h3>
-                <div class="icon-grid" style="grid-template-columns: repeat(2, 1fr);">
-                    <div class="icon-item">
-                        <span class="emoji">☁️</span>
-                        <h4>서버리스 (Serverless)</h4>
-                        <p><strong>Google Apps Script</strong>로 무료 호스팅</p>
-                    </div>
-                    <div class="icon-item">
-                        <span class="emoji">🔄</span>
-                        <h4>데이터 연동</h4>
-                        <p><strong>구글시트</strong> 수정 시 앱 즉시 반영</p>
+                <!-- Tab Content: Data Flow -->
+                <div id="fairy-content-dataflow" class="fairy-tab-content hidden">
+                    <div class="bg-slate-800 rounded-2xl border border-slate-700 p-6">
+                        <h3 class="text-lg font-bold text-white mb-6 text-center flex items-center justify-center gap-2">
+                            <i data-lucide="workflow" class="w-5 h-5 text-purple-400"></i> 데이터 파이프라인
+                        </h3>
+
+                        <!-- Data Flow Diagram -->
+                        <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+                            <!-- Step 1: Source -->
+                            <div class="dataflow-node cursor-pointer hover:scale-105 transition-transform" onclick="showDataflowDetail('source')">
+                                <div class="bg-slate-700 border-2 border-slate-500 rounded-xl p-4 text-center min-w-[140px] hover:border-amber-400 transition-colors">
+                                    <div class="text-3xl mb-2">📄</div>
+                                    <div class="font-bold text-white text-sm">원본 데이터</div>
+                                    <div class="text-xs text-slate-400">PDF / Excel</div>
+                                </div>
+                            </div>
+
+                            <div class="dataflow-arrow text-amber-400">
+                                <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                            </div>
+
+                            <!-- Step 2: Python -->
+                            <div class="dataflow-node cursor-pointer hover:scale-105 transition-transform" onclick="showDataflowDetail('python')">
+                                <div class="bg-blue-900/30 border-2 border-blue-500/50 rounded-xl p-4 text-center min-w-[140px] hover:border-blue-400 transition-colors">
+                                    <div class="text-3xl mb-2">🐍</div>
+                                    <div class="font-bold text-blue-300 text-sm">Python 스크립트</div>
+                                    <div class="text-xs text-blue-400">데이터 정제</div>
+                                </div>
+                            </div>
+
+                            <div class="dataflow-arrow text-amber-400">
+                                <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                            </div>
+
+                            <!-- Step 3: Google Sheets -->
+                            <div class="dataflow-node cursor-pointer hover:scale-105 transition-transform" onclick="showDataflowDetail('sheets')">
+                                <div class="bg-green-900/30 border-2 border-green-500/50 rounded-xl p-4 text-center min-w-[140px] hover:border-green-400 transition-colors">
+                                    <div class="text-3xl mb-2">📊</div>
+                                    <div class="font-bold text-green-300 text-sm">Google Sheets</div>
+                                    <div class="text-xs text-green-400">데이터베이스</div>
+                                </div>
+                            </div>
+
+                            <div class="dataflow-arrow text-amber-400">
+                                <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                            </div>
+
+                            <!-- Step 4: Apps Script -->
+                            <div class="dataflow-node cursor-pointer hover:scale-105 transition-transform" onclick="showDataflowDetail('gas')">
+                                <div class="bg-yellow-900/30 border-2 border-yellow-500/50 rounded-xl p-4 text-center min-w-[140px] hover:border-yellow-400 transition-colors">
+                                    <div class="text-3xl mb-2">⚡</div>
+                                    <div class="font-bold text-yellow-300 text-sm">Apps Script</div>
+                                    <div class="text-xs text-yellow-400">백엔드 API</div>
+                                </div>
+                            </div>
+
+                            <div class="dataflow-arrow text-amber-400">
+                                <i data-lucide="arrow-right" class="w-6 h-6"></i>
+                            </div>
+
+                            <!-- Step 5: Web App -->
+                            <div class="dataflow-node cursor-pointer hover:scale-105 transition-transform" onclick="showDataflowDetail('webapp')">
+                                <div class="bg-purple-900/30 border-2 border-purple-500/50 rounded-xl p-4 text-center min-w-[140px] hover:border-purple-400 transition-colors">
+                                    <div class="text-3xl mb-2">📱</div>
+                                    <div class="font-bold text-purple-300 text-sm">모바일 웹앱</div>
+                                    <div class="text-xs text-purple-400">사용자 인터페이스</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detail Panel -->
+                        <div id="dataflow-detail-panel" class="bg-slate-900 rounded-xl p-5 min-h-[180px]">
+                            <div class="text-center text-slate-500">
+                                <i data-lucide="mouse-pointer-click" class="w-10 h-10 mx-auto mb-3 opacity-50"></i>
+                                <p class="text-sm">위 다이어그램의 단계를 클릭하여<br>상세 정보를 확인하세요</p>
+                            </div>
+                        </div>
+
+                        <!-- Real-time Update Animation -->
+                        <div class="mt-6 bg-gradient-to-r from-green-900/20 to-blue-900/20 border border-green-500/30 rounded-xl p-4">
+                            <div class="flex items-center gap-4">
+                                <div class="flex-shrink-0">
+                                    <div class="w-12 h-12 bg-green-900/50 rounded-full flex items-center justify-center animate-pulse">
+                                        <i data-lucide="refresh-cw" class="w-6 h-6 text-green-400"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-green-300 text-sm m-0">실시간 데이터 반영</h4>
+                                    <p class="text-xs text-green-400/70 m-0 mt-1">Google Sheets 수정 → 웹앱 새로고침 → 변경사항 즉시 반영!</p>
+                                    <p class="text-xs text-slate-500 m-0 mt-1">별도 배포 없이 데이터만 수정하면 됩니다.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="slide-number">10 / 12</div>
+            <div class="slide-number">9 / 11</div>
         </section>
 
         <!-- Conclusion -->
-        <section class="slide" id="slide-9">
+        <section class="slide" id="slide-8">
             <div class="content">
                 <span class="section-tag">Takeaways</span>
                 <h2>🔑 핵심 메시지</h2>
@@ -923,16 +1376,16 @@
                     <p>작은 자동화부터 시작해보세요!</p>
                 </div>
             </div>
-            <div class="slide-number">11 / 12</div>
+            <div class="slide-number">10 / 11</div>
         </section>
 
         <!-- Q&A -->
-        <section class="slide cover" id="slide-10">
+        <section class="slide cover" id="slide-9">
             <div class="content">
                 <h1>❓ Q&A</h1>
                 <p class="subtitle" style="margin-top: 60px; font-size: 32px;">감사합니다. 🙏</p>
             </div>
-            <div class="slide-number">12 / 12</div>
+            <div class="slide-number">11 / 11</div>
         </section>
     </div>
 
@@ -1354,10 +1807,529 @@
             if(window.lucide) lucide.createIcons();
         }
 
+        // ============================================
+        // 4. Case 1: 주차등록 자동화 인터랙티브 로직
+        // ============================================
+        
+        // Playwright Simulation Data
+        const pwStepsData = [
+            {
+                title: "로그인 페이지 접속",
+                code: `// 1. 로그인 페이지 접속
+await page.goto('https://a17687.pweb.kr/login');
+await page.waitForLoadState('networkidle');`,
+                browserContent: `
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🔐</div>
+                        <h3 class="text-xl font-bold text-white mb-2">주차 관리 시스템</h3>
+                        <div class="space-y-3 w-64 mx-auto">
+                            <input type="text" placeholder="ID" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm">
+                            <input type="password" placeholder="PASSWORD" class="w-full bg-slate-700 border border-slate-600 rounded-lg px-4 py-2 text-white text-sm">
+                            <button class="w-full bg-blue-600 text-white rounded-lg py-2 font-bold text-sm">로그인</button>
+                        </div>
+                    </div>`
+            },
+            {
+                title: "아이디/비밀번호 입력 & 로그인",
+                code: `// 2. 로그인 정보 입력
+await page.getByRole('textbox', { name: 'ID' }).fill('백패커');
+await page.getByRole('textbox', { name: 'PASSWORD' }).fill('1111');
+await page.getByRole('button', { name: 'Submit' }).click();
+await page.waitForLoadState('networkidle');`,
+                browserContent: `
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🔐</div>
+                        <h3 class="text-xl font-bold text-white mb-2">주차 관리 시스템</h3>
+                        <div class="space-y-3 w-64 mx-auto">
+                            <input type="text" value="백패커" disabled class="w-full bg-indigo-900/50 border-2 border-indigo-500 rounded-lg px-4 py-2 text-white text-sm">
+                            <input type="password" value="••••" disabled class="w-full bg-indigo-900/50 border-2 border-indigo-500 rounded-lg px-4 py-2 text-white text-sm">
+                            <button class="w-full bg-indigo-500 text-white rounded-lg py-2 font-bold text-sm animate-pulse">로그인 중...</button>
+                        </div>
+                    </div>`
+            },
+            {
+                title: "차량번호 검색",
+                code: `// 3. 차량번호 검색
+await page.getByRole('textbox', { name: '차량번호' }).fill('12가3456');
+await page.getByRole('button', { name: '검색' }).click();
+await page.waitForTimeout(2000);`,
+                browserContent: `
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🚗</div>
+                        <h3 class="text-lg font-bold text-white mb-4">차량 검색</h3>
+                        <div class="bg-slate-700 rounded-lg p-4 w-72 mx-auto">
+                            <div class="flex gap-2 mb-4">
+                                <input type="text" value="12가3456" disabled class="flex-1 bg-indigo-900/50 border-2 border-indigo-500 rounded px-3 py-2 text-white text-sm">
+                                <button class="bg-indigo-500 text-white px-4 py-2 rounded text-sm">검색</button>
+                            </div>
+                            <div class="bg-slate-800 rounded p-3 text-left">
+                                <div class="text-green-400 text-sm mb-2">✓ 검색 결과</div>
+                                <div class="text-white text-sm">차량번호: <strong>12가3456</strong></div>
+                                <div class="text-slate-400 text-xs mt-1">입차시간: 14:30</div>
+                            </div>
+                        </div>
+                    </div>`
+            },
+            {
+                title: "무료 1시간 할인 등록",
+                code: `// 4. 할인 버튼 클릭
+await page.getByRole('link', { name: '무료 1시간할인' }).click();
+await page.getByText('OK').click(); // 팝업 확인`,
+                browserContent: `
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🎫</div>
+                        <h3 class="text-lg font-bold text-white mb-4">할인 등록</h3>
+                        <div class="bg-slate-700 rounded-lg p-4 w-72 mx-auto">
+                            <div class="space-y-2 mb-4">
+                                <button class="w-full bg-indigo-500 text-white py-2 rounded text-sm font-bold border-2 border-indigo-400 animate-pulse">무료 1시간할인 ✓</button>
+                                <button class="w-full bg-slate-600 text-slate-300 py-2 rounded text-sm">유료 30분할인 (₩3,000)</button>
+                                <button class="w-full bg-slate-600 text-slate-300 py-2 rounded text-sm">유료 1시간할인 (₩6,000)</button>
+                            </div>
+                            <div class="bg-green-900/50 border border-green-500 rounded p-3">
+                                <div class="text-green-400 text-sm">✓ 등록되었습니다!</div>
+                            </div>
+                        </div>
+                    </div>`
+            },
+            {
+                title: "슬랙 결과 알림",
+                code: `// 5. 슬랙 메시지 전송
+await slack.chat.postMessage({
+  channel: channelId,
+  text: \`\${mention}님의 차량 '12가3456'에 무료주차 1시간이 등록되었습니다.\`,
+  thread_ts: threadTs
+});`,
+                browserContent: `
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">💬</div>
+                        <h3 class="text-lg font-bold text-white mb-4">Slack 알림 전송</h3>
+                        <div class="bg-slate-700 rounded-lg p-4 w-80 mx-auto text-left">
+                            <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-600">
+                                <div class="w-8 h-8 bg-purple-600 rounded flex items-center justify-center text-white text-sm">🤖</div>
+                                <div class="font-bold text-white text-sm">주차등록 봇</div>
+                            </div>
+                            <div class="bg-slate-800 rounded p-3">
+                                <p class="text-slate-200 text-sm"><strong class="text-blue-400">@홍길동</strong>님이 요청하신 <strong>'12가3456'</strong> 차량에 대해</p>
+                                <p class="text-green-400 text-sm font-bold mt-1">✅ 무료주차 1시간이 등록되었습니다.</p>
+                            </div>
+                        </div>
+                    </div>`
+            }
+        ];
+
+        let currentPwStep = 0;
+        let pwAutoPlayInterval = null;
+
+        function switchParkingTab(tabId) {
+            document.querySelectorAll('.parking-main-tab').forEach(btn => {
+                if(btn.id === `parking-tab-${tabId === 'simulation' ? 'sim' : 'arch'}`) {
+                    btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-500');
+                    btn.classList.remove('bg-slate-800', 'text-slate-400', 'border-slate-600');
+                } else {
+                    btn.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-500');
+                    btn.classList.add('bg-slate-800', 'text-slate-400', 'border-slate-600');
+                }
+            });
+            document.querySelectorAll('.parking-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`parking-content-${tabId}`).classList.remove('hidden');
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function goToPwStep(step) {
+            if(step < 0 || step >= pwStepsData.length) return;
+            currentPwStep = step;
+            
+            // Update step dots
+            document.querySelectorAll('.pw-step-dot').forEach((dot, i) => {
+                if(i <= step) {
+                    dot.classList.remove('bg-slate-600');
+                    dot.classList.add('bg-indigo-500');
+                } else {
+                    dot.classList.add('bg-slate-600');
+                    dot.classList.remove('bg-indigo-500');
+                }
+            });
+
+            // Update step cards
+            document.querySelectorAll('.pw-step-card').forEach((card, i) => {
+                card.classList.remove('active', 'bg-indigo-900/30', 'border-indigo-500/50');
+                card.classList.add('bg-slate-800', 'border-slate-700');
+                const numCircle = card.querySelector('.w-8');
+                numCircle.classList.remove('bg-indigo-600', 'text-white');
+                numCircle.classList.add('bg-slate-700', 'text-slate-400');
+                const title = card.querySelector('h4');
+                title.classList.remove('text-white');
+                title.classList.add('text-slate-300');
+                const check = card.querySelector('.pw-check');
+                if(i < step) {
+                    check.classList.remove('hidden');
+                } else {
+                    check.classList.add('hidden');
+                }
+                
+                if(i === step) {
+                    card.classList.add('active', 'bg-indigo-900/30', 'border-indigo-500/50');
+                    card.classList.remove('bg-slate-800', 'border-slate-700');
+                    numCircle.classList.add('bg-indigo-600', 'text-white');
+                    numCircle.classList.remove('bg-slate-700', 'text-slate-400');
+                    title.classList.add('text-white');
+                    title.classList.remove('text-slate-300');
+                }
+            });
+
+            // Update browser mock
+            document.getElementById('browser-mock-content').innerHTML = pwStepsData[step].browserContent;
+            
+            // Update code display
+            document.getElementById('pw-code-display').innerHTML = `<code>${pwStepsData[step].code}</code>`;
+            
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function resetPwSimulation() {
+            stopPwAutoPlay();
+            currentPwStep = 0;
+            goToPwStep(0);
+        }
+
+        function autoPlayPwSimulation() {
+            if(pwAutoPlayInterval) {
+                stopPwAutoPlay();
+                return;
+            }
+            
+            const btn = document.getElementById('pw-autoplay-btn');
+            btn.innerHTML = '<i data-lucide="pause" class="w-4 h-4"></i> 일시정지';
+            if(window.lucide) lucide.createIcons();
+            
+            pwAutoPlayInterval = setInterval(() => {
+                if(currentPwStep < pwStepsData.length - 1) {
+                    goToPwStep(currentPwStep + 1);
+                } else {
+                    stopPwAutoPlay();
+                }
+            }, 2000);
+        }
+
+        function stopPwAutoPlay() {
+            if(pwAutoPlayInterval) {
+                clearInterval(pwAutoPlayInterval);
+                pwAutoPlayInterval = null;
+            }
+            const btn = document.getElementById('pw-autoplay-btn');
+            if(btn) {
+                btn.innerHTML = '<i data-lucide="play" class="w-4 h-4"></i> 자동 재생';
+                if(window.lucide) lucide.createIcons();
+            }
+        }
+
+        // Architecture Detail Data
+        const archDetailData = {
+            user: {
+                icon: '👤',
+                title: '사용자',
+                description: '슬랙 채널에서 :주차등록: 이모지를 클릭하여 주차등록 워크플로우를 시작합니다.',
+                details: ['이모지 리액션으로 트리거', '정보 입력 폼 자동 표시', '별도 앱 설치 불필요']
+            },
+            slack: {
+                icon: '💬',
+                title: 'Slack Workflow',
+                description: '슬랙 워크플로우 빌더로 구축된 정보 수집 폼입니다.',
+                details: ['차량번호 입력', '등록요청시간 선택', '필요 등록시간 선택 (1시간/1.5시간/2시간)']
+            },
+            sheets: {
+                icon: '📊',
+                title: 'Google Sheets',
+                description: '슬랙에서 제출된 데이터가 자동으로 기록되는 데이터베이스 역할을 합니다.',
+                details: ['이름, 차량번호, 요청시간 등 저장', '슬랙 메시지 링크 저장 (결과 알림용)', '실시간 데이터 동기화']
+            },
+            server: {
+                icon: '🖥️',
+                title: 'Node.js Server',
+                description: '핵심 자동화 로직을 담당하는 백엔드 서버입니다.',
+                details: ['10분마다 시트 데이터 동기화', 'node-schedule로 예약 작업 관리', 'Playwright로 브라우저 자동화 실행']
+            },
+            bot: {
+                icon: '🤖',
+                title: 'Slack Bot',
+                description: '처리 결과를 원본 메시지의 스레드에 댓글로 알려줍니다.',
+                details: ['@멘션으로 요청자에게 알림', '등록 성공/실패 결과 전달', '에러 발생 시 운영 채널에 알림']
+            }
+        };
+
+        function showArchDetail(nodeId) {
+            const data = archDetailData[nodeId];
+            if(!data) return;
+            
+            const panel = document.getElementById('arch-detail-panel');
+            panel.innerHTML = `
+                <div class="text-center mb-4">
+                    <div class="text-4xl mb-2">${data.icon}</div>
+                    <h4 class="font-bold text-white text-lg m-0">${data.title}</h4>
+                </div>
+                <p class="text-slate-300 text-sm mb-4">${data.description}</p>
+                <ul class="space-y-2">
+                    ${data.details.map(d => `<li class="flex items-start gap-2 text-sm text-slate-400"><i data-lucide="check" class="w-4 h-4 text-indigo-400 mt-0.5 flex-shrink-0"></i>${d}</li>`).join('')}
+                </ul>
+            `;
+            if(window.lucide) lucide.createIcons();
+        }
+
+        // ============================================
+        // 5. Case 3: 테이블 요정 인터랙티브 로직
+        // ============================================
+        
+        // Fairy Demo Data
+        const fairyTablesData = [
+            {
+                name: '테이블 1',
+                fairy1: '한진주',
+                fairy2: '김다정',
+                artists: [
+                    { name: '아비엥또', category: '판매 우수', sector: '가죽공예' },
+                    { name: '여누즈', category: '초청 작가', sector: '도자기' },
+                    { name: '달빛공방', category: '신인 작가', sector: '캔들' },
+                    { name: '소소작업실', category: '판매 우수', sector: '악세서리' }
+                ]
+            },
+            {
+                name: '테이블 2',
+                fairy1: '이수진',
+                fairy2: '박민서',
+                artists: [
+                    { name: '핸드메이드J', category: '초청 작가', sector: '가방' },
+                    { name: '봄날공방', category: '판매 우수', sector: '자수' },
+                    { name: '작은숲', category: '신인 작가', sector: '목공예' }
+                ]
+            },
+            {
+                name: '테이블 3',
+                fairy1: '최유나',
+                fairy2: '정하은',
+                artists: [
+                    { name: '달콤작업실', category: '판매 우수', sector: '비누' },
+                    { name: '하늘공방', category: '초청 작가', sector: '뜨개질' },
+                    { name: '초록손', category: '신인 작가', sector: '화분' },
+                    { name: '빛나는공예', category: '판매 우수', sector: '유리공예' }
+                ]
+            }
+        ];
+
+        let currentFairyTable = 0;
+        let selectedArtist = null;
+
+        function switchFairyTab(tabId) {
+            document.querySelectorAll('.fairy-main-tab').forEach(btn => {
+                if(btn.id === `fairy-tab-${tabId === 'demo' ? 'demo' : 'flow'}`) {
+                    btn.classList.add('bg-purple-600', 'text-white', 'border-purple-500');
+                    btn.classList.remove('bg-slate-800', 'text-slate-400', 'border-slate-600');
+                } else {
+                    btn.classList.remove('bg-purple-600', 'text-white', 'border-purple-500');
+                    btn.classList.add('bg-slate-800', 'text-slate-400', 'border-slate-600');
+                }
+            });
+            document.querySelectorAll('.fairy-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`fairy-content-${tabId}`).classList.remove('hidden');
+            if(window.lucide) lucide.createIcons();
+        }
+
+        function selectFairyTable(index) {
+            currentFairyTable = index;
+            selectedArtist = null;
+            
+            // Update tab styles
+            document.querySelectorAll('.fairy-table-tab').forEach((tab, i) => {
+                if(i === index) {
+                    tab.classList.add('bg-purple-600', 'text-white');
+                    tab.classList.remove('bg-white/80', 'text-purple-800');
+                } else {
+                    tab.classList.remove('bg-purple-600', 'text-white');
+                    tab.classList.add('bg-white/80', 'text-purple-800');
+                }
+            });
+            
+            renderFairyArtists();
+        }
+
+        function renderFairyArtists(filterQuery = null) {
+            const grid = document.getElementById('fairy-artist-grid');
+            const detail = document.getElementById('fairy-artist-detail');
+            detail.classList.add('hidden');
+            
+            let artists = fairyTablesData[currentFairyTable].artists;
+            if(filterQuery) {
+                artists = [];
+                fairyTablesData.forEach(table => {
+                    table.artists.forEach(a => {
+                        if(a.name.toLowerCase().includes(filterQuery.toLowerCase())) {
+                            artists.push({...a, tableName: table.name, fairy1: table.fairy1, fairy2: table.fairy2});
+                        }
+                    });
+                });
+            }
+            
+            grid.innerHTML = artists.map((artist, i) => `
+                <div class="bg-white/90 rounded-xl p-3 text-center cursor-pointer hover:bg-white transition-all shadow-sm" onclick="showFairyArtistDetail(${i}, ${filterQuery ? 'true' : 'false'})">
+                    <div class="font-bold text-purple-800 text-sm">${artist.name}</div>
+                    <div class="text-xs text-amber-700">${artist.category || '초청 작가'}</div>
+                </div>
+            `).join('');
+            
+            grid.dataset.artists = JSON.stringify(artists);
+        }
+
+        function showFairyArtistDetail(index, isSearch = false) {
+            const grid = document.getElementById('fairy-artist-grid');
+            const detail = document.getElementById('fairy-artist-detail');
+            const artists = JSON.parse(grid.dataset.artists || '[]');
+            const artist = artists[index];
+            if(!artist) return;
+            
+            const table = isSearch ? artist : fairyTablesData[currentFairyTable];
+            
+            detail.innerHTML = `
+                <button onclick="closeFairyArtistDetail()" class="text-purple-600 text-xs font-bold mb-2">← 목록으로</button>
+                <div class="text-center mb-3">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                        <span class="text-2xl">🎨</span>
+                    </div>
+                    <h4 class="font-bold text-purple-800 text-base m-0">${artist.name}</h4>
+                    <p class="text-xs text-amber-700 m-0">${artist.category}</p>
+                </div>
+                <div class="space-y-2 text-xs">
+                    <p class="m-0"><strong class="text-purple-700">부문:</strong> <span class="text-gray-700">${artist.sector}</span></p>
+                    <p class="m-0"><strong class="text-purple-700">테이블:</strong> <span class="text-gray-700">${isSearch ? artist.tableName : table.name}</span></p>
+                    <p class="m-0"><strong class="text-purple-700">담당 요정:</strong> <span class="text-gray-700">${isSearch ? artist.fairy1 + ', ' + artist.fairy2 : table.fairy1 + ', ' + table.fairy2}</span></p>
+                </div>
+                <button class="w-full mt-3 bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 rounded-lg text-xs font-bold">
+                    작가 홈 방문하기 →
+                </button>
+            `;
+            
+            grid.classList.add('hidden');
+            detail.classList.remove('hidden');
+        }
+
+        function closeFairyArtistDetail() {
+            document.getElementById('fairy-artist-grid').classList.remove('hidden');
+            document.getElementById('fairy-artist-detail').classList.add('hidden');
+        }
+
+        function toggleFairyGuide() {
+            const guide = document.getElementById('fairy-guide-section');
+            guide.classList.toggle('hidden');
+        }
+
+        function fairySearch() {
+            const query = document.getElementById('fairy-search-input').value.trim();
+            if(query) {
+                renderFairyArtists(query);
+            } else {
+                renderFairyArtists();
+            }
+        }
+
+        // Dataflow Detail Data
+        const dataflowDetailData = {
+            source: {
+                icon: '📄',
+                title: '원본 데이터',
+                description: '행사 운영팀에서 제공받은 원본 데이터입니다.',
+                code: `# 원본 파일 형식
+- table_list.pdf: 테이블 배치표
+- artist_list.xlsx: 작가 목록 및 정보`,
+                details: ['PDF에서 테이블-작가 매핑 정보 추출', 'Excel에서 작가 상세 정보 추출', '수작업으로 관리되던 종이 문서를 디지털화']
+            },
+            python: {
+                icon: '🐍',
+                title: 'Python 스크립트',
+                description: 'PDF와 Excel 파일을 파싱하여 정제된 데이터로 변환합니다.',
+                code: `# read_pdf.py
+import pdfplumber
+with pdfplumber.open('table_list.pdf') as pdf:
+    text = pdf.pages[0].extract_text()
+    # 테이블 정보 파싱...`,
+                details: ['pdfplumber로 PDF 텍스트 추출', 'pandas로 Excel 데이터 처리', 'CSV 형식으로 정제된 데이터 출력']
+            },
+            sheets: {
+                icon: '📊',
+                title: 'Google Sheets',
+                description: '정제된 데이터를 저장하는 클라우드 데이터베이스 역할을 합니다.',
+                code: `# 시트 구조
+Sheet 1: artist_list
+- 구분, 분류, 부문, URL, 작가명, 작가 UUID
+
+Sheet 2: table_info  
+- 테이블, 테요1, 테요2, 작가, 작가 UUID`,
+                details: ['CSV 데이터를 시트에 붙여넣기', '담당자가 직접 수정 가능', '버전 관리 및 공동 편집 지원']
+            },
+            gas: {
+                icon: '⚡',
+                title: 'Google Apps Script',
+                description: 'Google Sheets 데이터를 웹앱에 제공하는 서버리스 백엔드입니다.',
+                code: `// Code.gs
+function getTableData() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const artistSheet = ss.getSheetByName('artist_list');
+  // 데이터 조합 후 JSON 반환
+  return Object.values(tables);
+}`,
+                details: ['doGet()으로 웹앱 진입점 제공', 'getTableData()로 데이터 API 제공', '무료 호스팅 및 HTTPS 자동 제공']
+            },
+            webapp: {
+                icon: '📱',
+                title: '모바일 웹앱',
+                description: '테이블 요정들이 사용하는 최종 사용자 인터페이스입니다.',
+                code: `&lt;!-- index.html --&gt;
+&lt;script&gt;
+  google.script.run
+    .withSuccessHandler(onDataLoaded)
+    .getDataForWeb();
+&lt;/script&gt;`,
+                details: ['반응형 모바일 최적화 UI', '테이블별 작가 조회 및 검색', '요정 가이드 및 작가 홈 연결']
+            }
+        };
+
+        function showDataflowDetail(nodeId) {
+            const data = dataflowDetailData[nodeId];
+            if(!data) return;
+            
+            const panel = document.getElementById('dataflow-detail-panel');
+            panel.innerHTML = `
+                <div class="flex items-start gap-4">
+                    <div class="text-4xl">${data.icon}</div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-white text-lg m-0 mb-2">${data.title}</h4>
+                        <p class="text-slate-300 text-sm mb-3">${data.description}</p>
+                        <div class="bg-slate-800 rounded-lg p-3 mb-3">
+                            <pre class="text-xs text-green-400 font-mono m-0 overflow-x-auto"><code>${data.code}</code></pre>
+                        </div>
+                        <ul class="space-y-1">
+                            ${data.details.map(d => `<li class="flex items-start gap-2 text-xs text-slate-400"><i data-lucide="check" class="w-3 h-3 text-purple-400 mt-0.5 flex-shrink-0"></i>${d}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            if(window.lucide) lucide.createIcons();
+        }
+
+        // ============================================
         // 초기화
+        // ============================================
         window.addEventListener('load', () => {
             renderTokenOptions(0);
             switchUseCaseTab('finance');
+            
+            // 주차등록 시뮬레이션 초기화
+            goToPwStep(0);
+            
+            // 테이블 요정 데모 초기화
+            renderFairyArtists();
+            
             if(window.lucide) lucide.createIcons();
         });
     </script>
